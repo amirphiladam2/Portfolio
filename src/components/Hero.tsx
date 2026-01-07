@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Twitter, Youtube, Download } from "lucide-react";
 import { Button } from "./ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/profile.png";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/amirpadam", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/amirpadam", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/amirpadam", label: "Instagram" },
   { icon: Twitter, href: "https://twitter.com/amirpadam", label: "Twitter" },
 ];
 
@@ -27,12 +26,11 @@ const Hero = () => {
               Amir P.Adam
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
-              I'm an <span className="text-primary font-semibold">Embedded System Engineer</span>
+              I'm an <span className="text-primary font-semibold">Embedded Systems & Software Developer</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
-              A Final Year ECE undergrad transforming ideas into digital experiences 
-              with a focus on Embedded Systems and mobile applications development 
-              using React Native.
+              Software Developer with a background in Electronics and Communication Engineering,
+              focused on Embedded Systems and Mobile Application Development using React Native.
             </p>
 
             {/* Social Links */}
@@ -62,9 +60,9 @@ const Hero = () => {
                 </a>
               </Button>
               <Button variant="youtube" size="lg" asChild>
-                <a href="https://youtube.com/@YourChannel" target="_blank" rel="noopener noreferrer">
+                <a href="https://youtube.com/@amirdevstudio-1" target="_blank" rel="noopener noreferrer">
                   <Youtube size={20} />
-                  YouTube Channel
+                  AmirDevStudio
                 </a>
               </Button>
             </div>

@@ -1,73 +1,221 @@
-# Welcome to your Lovable project
+# Portfolio Website
 
-## Project info
+A modern, responsive portfolio website showcasing projects, skills, and contact information for Amir P. Adam - Embedded Systems & Software Developer.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern UI/UX**: Built with shadcn-ui components and Tailwind CSS for a beautiful, responsive design
+- **Smooth Animations**: Framer Motion animations for engaging user experience
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Project Showcase**: Display featured projects with images, descriptions, and links
+- **Skills Section**: Interactive tech stack visualization
+- **Contact Form**: Easy way for visitors to get in touch
+- **Dark Mode Ready**: Built with theme support using next-themes
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+### Core Technologies
+- **React 18** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and dev server
+- **React Router** - Client-side routing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### UI & Styling
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn-ui** - High-quality React components
+- **Framer Motion** - Animation library
+- **Lucide React** - Icon library
 
-Changes made via Lovable will be committed automatically to this repo.
+### Additional Libraries
+- **React Query (TanStack Query)** - Data fetching and caching
+- **React Hook Form** - Form handling
+- **Zod** - Schema validation
 
-**Use your preferred IDE**
+## 📁 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+portfolio-booster/
+├── public/                 # Static assets
+│   ├── favicon.ico
+│   └── robots.txt
+├── src/
+│   ├── assets/            # Images and media files
+│   ├── components/         # React components
+│   │   ├── ui/            # shadcn-ui components
+│   │   ├── Contact.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── Projects.tsx
+│   │   └── Skills.tsx
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # Utility functions
+│   ├── pages/             # Page components
+│   │   ├── Index.tsx
+│   │   └── NotFound.tsx
+│   ├── App.tsx            # Main app component
+│   ├── main.tsx           # Entry point
+│   └── index.css          # Global styles
+├── package.json
+├── vite.config.ts
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
-**Edit a file directly in GitHub**
+## 🚦 Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
 
-**Use GitHub Codespaces**
+- Node.js (v18 or higher recommended)
+- npm or yarn or bun
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Installation
 
-## What technologies are used for this project?
+1. Clone the repository:
+```bash
+git clone https://github.com/amirphiladam2/Portfolio.git
+cd portfolio-booster
+```
 
-This project is built with:
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+bun install
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+bun dev
+```
 
-## How can I deploy this project?
+4. Open your browser and navigate to `http://localhost:8080`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📜 Available Scripts
 
-## Can I connect a custom domain to my Lovable project?
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build in development mode
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-Yes, you can!
+## 🎨 Customization
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Updating Personal Information
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. **Hero Section** (`src/components/Hero.tsx`):
+   - Update name, title, and bio
+   - Modify social media links
+   - Replace profile image in `src/assets/profile.png`
+
+2. **Projects** (`src/components/Projects.tsx`):
+   - Add/remove projects in the `projects` array
+   - Update project images in `src/assets/`
+   - Modify project links and descriptions
+
+3. **Skills** (`src/components/Skills.tsx`):
+   - Update the `skills` array with your technologies
+   - Add/remove skill icons
+
+4. **Contact** (`src/components/Contact.tsx`):
+   - Update contact information
+   - Configure form submission endpoint
+
+### Styling
+
+The project uses Tailwind CSS for styling. Customize colors, fonts, and other design tokens in:
+- `tailwind.config.ts` - Tailwind configuration
+- `src/index.css` - Global styles and CSS variables
+
+## 🌐 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+### Deploy to Netlify
+
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to Netlify
+3. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+
+### Deploy to Vercel
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel`
+3. Follow the prompts
+
+### Deploy to GitHub Pages
+
+1. Install gh-pages: `npm install --save-dev gh-pages`
+2. Add to `package.json`:
+```json
+"scripts": {
+  "deploy": "npm run build && gh-pages -d dist"
+}
+```
+3. Run: `npm run deploy`
+
+## 📱 Sections
+
+### Hero Section
+- Introduction and personal branding
+- Social media links
+- Call-to-action buttons (CV download, YouTube channel)
+
+### Skills Section
+- Interactive tech stack display
+- Icons and labels for each technology
+
+### Projects Section
+- Featured projects with images
+- Project descriptions and tags
+- Links to project repositories/demos
+
+### Contact Section
+- Contact form for inquiries
+- Additional contact information
+
+### Footer
+- Additional links and information
+- Copyright notice
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Amir P. Adam**
+- GitHub: [@amirpadam](https://github.com/amirpadam)
+- LinkedIn: [amirpadam](https://linkedin.com/in/amirpadam)
+- Twitter: [@amirpadam](https://twitter.com/amirpadam)
+- Website: [amirp.netlify.app](https://amirp.netlify.app)
+- YouTube: [AmirDevStudio](https://youtube.com/@amirdevstudio-1)
+
+## 🙏 Acknowledgments
+
+- [shadcn-ui](https://ui.shadcn.com/) for the amazing component library
+- [Vite](https://vitejs.dev/) for the excellent build tool
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+
+---
+
+Made with ❤️ by Amir P. Adam

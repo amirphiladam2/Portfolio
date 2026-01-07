@@ -1,32 +1,48 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
-import project1 from "@/assets/project1.jpg";
-import project2 from "@/assets/project2.jpg";
-import project3 from "@/assets/project3.jpg";
+import BudgetTracker from "@/assets/BudgetTracker.png";
+import Actionable from "@/assets/Actionable.png";
+import WirelessSensor from "@/assets/WirelessSensor.jpg";
+import HomeAutomation from "@/assets/HomeAutomation.jpg";
+import DisasterResilient from "@/assets/DistasterManagement.jpg";
 
 const projects = [
   {
-    title: "Finance Tracker App",
+    title: "Actionable-Task-Tracker App",
+    description: "A mobile application for tracking personal tasks with visualization and task planning.",
+    image: Actionable,
+    tags: ["React Native", "Expo", "JavaScript","Supabase"],
+    link: "https://github.com/amirphiladam2/Actionable",
+  },
+  {
+    title: "Budget Tracker App",
     description: "A mobile application for tracking personal finances with visualization and budget planning.",
-    image: project1,
-    tags: ["React Native", "Firebase", "Expo", "JavaScript"],
+    image: BudgetTracker,
+    tags: ["React Native", "Expo", "JavaScript","Supabase"],
     link: "https://amirp.netlify.app/myapps",
   },
   {
     title: "Wireless Sensor Network with LoRa",
     description: "A complete wireless sensor network solution using LoRa technology for long-range communication.",
-    image: project2,
+    image: WirelessSensor,
     tags: ["LoRa", "ESP32", "ESP8266", "Flask Server"],
     link: "https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html",
   },
   {
     title: "Smart Home System",
     description: "An integrated embedded system for home automation using Alexa & Google Home controllers.",
-    image: project3,
+    image: HomeAutomation,
     tags: ["C/C++", "ESP8266", "Alexa", "Google Home"],
     link: "https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html",
   },
+  {
+    title:"Disaster-Resilient Hybrid Mesh Communication System Using ESP32–LoRa",
+    description: "A disaster-resilient hybrid mesh communication system using ESP32-LoRa for long-range communication.",
+    image: DisasterResilient,
+    tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
+    link: "https://techtacklenerd.blogspot.com/2025/11/disaster-resilient-hybrid-mesh.html",
+  }
 ];
 
 const Projects = () => {
