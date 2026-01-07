@@ -203,10 +203,10 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👤 Author
 
 **Amir P. Adam**
-- GitHub: [@amirpadam](https://github.com/amirpadam)
-- LinkedIn: [amirpadam](https://linkedin.com/in/amirpadam)
-- Twitter: [@amirpadam](https://twitter.com/amirpadam)
-- Website: [amirp.netlify.app](https://amirp.netlify.app)
+- GitHub: [@amirpadam](https://github.com/amirphiladam2)
+- LinkedIn: [amirpadam](https://linkedin.com/in/amirphiladam)
+- Twitter: [@amirpadam](https://twitter.com/amirphiladam)
+- Website: [amiradam.tech](https://amiradam.tech)
 - YouTube: [AmirDevStudio](https://youtube.com/@amirdevstudio-1)
 
 ## 🙏 Acknowledgments
