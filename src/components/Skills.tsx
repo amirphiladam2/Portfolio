@@ -48,7 +48,7 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Tech <span className="text-gradient">Stack</span>
+            Tech <span className="text-primary">Stack</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Technologies I work with to bring ideas to life
@@ -69,7 +69,7 @@ const Skills = () => {
               whileHover={{ scale: 1.05, y: -5 }}
               className="group"
             >
-              <div className="glass px-6 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_hsl(180_100%_50%/0.3)] cursor-default">
+              <div className="glass px-6 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 cursor-default">
                 <span className="text-foreground group-hover:text-primary transition-colors duration-300 font-medium">
                   {skill.name}
                 </span>

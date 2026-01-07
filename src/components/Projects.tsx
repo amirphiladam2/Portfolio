@@ -41,7 +41,7 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
+            Featured <span className="text-primary">Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Check out some of my recent work
@@ -59,14 +59,13 @@ const Projects = () => {
               whileHover={{ y: -10 }}
               className="group"
             >
-              <div className="glass rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(180_100%_50%/0.2)]">
+              <div className="bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300">
                 <div className="relative overflow-hidden aspect-video">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-6">
                   <div className="flex flex-wrap gap-2 mb-4">

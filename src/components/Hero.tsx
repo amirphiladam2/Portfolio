@@ -27,7 +27,7 @@ const Hero = () => {
               Amir P.Adam
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
-              I'm an <span className="text-gradient font-semibold">Embedded System Engineer</span>
+              I'm an <span className="text-primary font-semibold">Embedded System Engineer</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
               A Final Year ECE undergrad transforming ideas into digital experiences 
@@ -45,7 +45,7 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-full border border-primary/50 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_hsl(180_100%_50%/0.4)]"
+                  className="w-12 h-12 rounded-full border border-primary/50 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
@@ -77,23 +77,12 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative">
-              {/* Animated Gradient Ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary p-1 animate-gradient"
-                style={{ backgroundSize: "200% 200%" }}
+            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary profile-glow animate-float">
+              <img
+                src={profileImage}
+                alt="Amir P. Adam"
+                className="w-full h-full object-cover"
               />
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden profile-glow animate-float">
-                <div className="absolute inset-1 rounded-full overflow-hidden bg-background">
-                  <img
-                    src={profileImage}
-                    alt="Amir P. Adam"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
