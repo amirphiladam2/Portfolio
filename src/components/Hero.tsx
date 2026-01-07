@@ -26,7 +26,7 @@ const Hero = () => {
               Amir P.Adam
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
-              I'm an <span className="text-primary font-semibold">Embedded Systems & Software Developer</span>
+              I'm a <span className="text-primary font-semibold">Software Developer</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
               Software Developer with a background in Electronics and Communication Engineering,
