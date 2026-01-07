@@ -1,24 +1,39 @@
 import { motion } from "framer-motion";
+import {
+  SiReact,
+  SiExpo,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiRedux,
+  SiPostgresql,
+  SiFirebase,
+  SiArduino,
+  SiFlask,
+  SiGit,
+  SiCplusplus,
+} from "@icons-pack/react-simple-icons";
+import { Cpu, Database, Radio, Smartphone, Home } from "lucide-react";
 
 const skills = [
-  { name: "React Native", category: "Mobile" },
-  { name: "Expo", category: "Mobile" },
-  { name: "NativeWind", category: "Mobile" },
-  { name: "TypeScript", category: "Language" },
-  { name: "JavaScript", category: "Language" },
-  { name: "C/C++", category: "Language" },
-  { name: "TailwindCSS", category: "Frontend" },
-  { name: "React", category: "Frontend" },
-  { name: "Redux", category: "State" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "DBMS", category: "Database" },
-  { name: "Firebase", category: "Backend" },
-  { name: "ESP32", category: "Embedded" },
-  { name: "ESP8266", category: "Embedded" },
-  { name: "LoRa", category: "Embedded" },
-  { name: "Arduino", category: "Embedded" },
-  { name: "Flask", category: "Backend" },
-  { name: "Git", category: "Tools" },
+  { name: "React Native", icon: SiReact },
+  { name: "Expo", icon: SiExpo },
+  { name: "NativeWind", icon: Smartphone },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "C/C++", icon: SiCplusplus },
+  { name: "TailwindCSS", icon: SiTailwindcss },
+  { name: "React", icon: SiReact },
+  { name: "Redux", icon: SiRedux },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "DBMS", icon: Database },
+  { name: "Firebase", icon: SiFirebase },
+  { name: "ESP32", icon: Cpu },
+  { name: "ESP8266", icon: Cpu },
+  { name: "LoRa", icon: Radio },
+  { name: "Arduino", icon: SiArduino },
+  { name: "Flask", icon: SiFlask },
+  { name: "Git", icon: SiGit },
 ];
 
 const container = {
@@ -69,7 +84,8 @@ const Skills = () => {
               whileHover={{ scale: 1.05, y: -5 }}
               className="group"
             >
-              <div className="glass px-6 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 cursor-default">
+              <div className="glass px-5 py-3 rounded-full border border-primary/30 hover:border-primary transition-all duration-300 cursor-default flex items-center gap-3">
+                <skill.icon className="w-5 h-5 text-primary" />
                 <span className="text-foreground group-hover:text-primary transition-colors duration-300 font-medium">
                   {skill.name}
                 </span>
