@@ -1,11 +1,11 @@
 import { Github, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/amirpadam", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/amirpadam", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/amirpadam", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com/amirpadam", label: "Twitter" },
-  { icon: Youtube, href: "https://youtube.com/@YourChannel", label: "YouTube" },
+  { icon: Github, href: "https://github.com/amirphiladam2", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/amirphiladam", label: "LinkedIn" },
+  { icon: Instagram, href: "https://instagram.com/amirp_2808", label: "Instagram" },
+  { icon: Twitter, href: "https://twitter.com/amirphiladam", label: "Twitter" },
+  { icon: Youtube, href: "https://youtube.com/amirdevstudio-1", label: "YouTube" },
 ];
 
 const Footer = () => {
