@@ -30,7 +30,7 @@ const Hero = () => {
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
               Software Developer with a background in Electronics and Communication Engineering,
-              focused on Embedded Systems and Mobile Application Development using React Native.
+              focused on Embedded Systems & IoT and Mobile Application Development using React Native.
             </p>
 
             {/* Social Links */}
