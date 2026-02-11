@@ -4,9 +4,9 @@ import { Button } from "./ui/button";
 import profileImage from "@/assets/profile.png";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/amirpadam", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/amirpadam", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com/amirpadam", label: "Twitter" },
+  { icon: Github, href: "https://github.com/amirphiladam2", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/amirphiladam", label: "LinkedIn" },
+  { icon: Twitter, href: "https://twitter.com/amirphiladam", label: "Twitter" },
 ];
 
 const Hero = () => {

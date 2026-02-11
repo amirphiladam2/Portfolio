@@ -3,7 +3,7 @@ import { Github, Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
 const socialLinks = [
   { icon: Github, href: "https://github.com/amirphiladam2", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/amirphiladam", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/amirp_2808", label: "Instagram" },
+  { icon: Instagram, href: "https://instagram.com/amirphiladam", label: "Instagram" },
   { icon: Twitter, href: "https://twitter.com/amirphiladam", label: "Twitter" },
   { icon: Youtube, href: "https://youtube.com/@amirdevstudio-1", label: "YouTube" },
 ];
