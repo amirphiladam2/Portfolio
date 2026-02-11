@@ -26,11 +26,15 @@ const Hero = () => {
               Amir P.Adam
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
-              I'm a <span className="text-primary font-semibold">Software Developer</span>
+              I'm a <span className="text-primary font-semibold">Embedded Systems and IoT Engineering Student</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
-              Software Developer with foundation in Electronics and Communication Engineering,
-              focused on Embedded Systems & IoT and Mobile Application Development using React Native.
+              Embedded Systems and IoT engineering student with hands-on experience in firmware development using
+              C/C++ and Python on platforms including ESP32, STM32, and Raspberry Pi. Strong foundation in analogue
+              and digital electronics, communication protocols, and system-level integration. Experienced in designing
+              and implementing end-to-end embedded solutions involving sensor interfacing, data acquisition, and
+              network communication. Actively seeking industrial exposure to apply engineering judgement, debugging
+              skills, and practical problem-solving in real-world systems.
             </p>
 
             {/* Social Links */}
@@ -54,7 +58,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <Button variant="hero" size="lg" asChild>
-                <a href="https://amirp.netlify.app/resume" target="_blank" rel="noopener noreferrer">
+                <a href="/cv.pdf" download>
                   <Download size={20} />
                   Download CV
                 </a>

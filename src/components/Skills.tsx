@@ -1,35 +1,20 @@
 import { motion } from "framer-motion";
 import {
-  SiReact,
-  SiExpo,
-  SiTypescript,
-  SiRedux,
-  SiPostgresql,
   SiRaspberrypi,
   SiArduino,
-  SiSupabase,
   SiMicropython,
-  SiGit,
   SiCplusplus,
 } from "@icons-pack/react-simple-icons";
-import { Cpu, Radio, Smartphone, Home } from "lucide-react";
+import { Cpu, Radio } from "lucide-react";
 
 const skills = [
-  { name: "React Native", icon: SiReact },
-  { name: "Expo", icon: SiExpo },
-  { name: "NativeWind", icon: Smartphone },
-  { name: "TypeScript", icon: SiTypescript },
   { name: "C++", icon: SiCplusplus },
-  { name: "Redux", icon: SiRedux },
-  { name: "PostgreSQL", icon: SiPostgresql },
-  { name: "Supabase", icon: SiSupabase },
   { name: "Raspberry Pi", icon: SiRaspberrypi },
   { name: "ESP32", icon: Cpu },
-  { name: "ESP8266", icon: Cpu },
+  { name: "STM32", icon: Cpu },
   { name: "LoRa", icon: Radio },
   { name: "Arduino", icon: SiArduino },
   { name: "MicroPython", icon: SiMicropython },
-  { name: "Git", icon: SiGit },
 ];
 
 const container = {
