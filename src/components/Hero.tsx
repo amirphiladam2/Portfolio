@@ -26,7 +26,7 @@ const Hero = () => {
               Amir P.Adam
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
-              I'm a <span className="text-primary font-semibold">Embedded Systems and IoT Engineering Student</span>
+              I'm an <span className="text-primary font-semibold">Embedded Systems and IoT Engineering Student</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg">
               Embedded Systems and IoT engineering student with hands-on experience in firmware development using

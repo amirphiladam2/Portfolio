@@ -10,7 +10,7 @@ const projects = [
     title: "Wireless Sensor Network with LoRa",
     description: "A complete wireless sensor network solution using LoRa technology for long-range communication.",
     image: WirelessSensor,
-    tags: ["LoRa", "ESP32", "ESP8266", "Flask Server"],
+    tags: ["LoRa", "ESP32", "ESP8266"],
     link: "https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html",
   },
   {
