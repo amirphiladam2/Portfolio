@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
+import Dashboard from "@/assets/Dashboard.png";
 import WirelessSensor from "@/assets/WirelessSensor.jpg";
 import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
 
 const projects = [
+
   {
-    title: "Wireless Sensor Network with LoRa",
-    description: "A complete wireless sensor network solution using LoRa technology for long-range communication.",
-    image: WirelessSensor,
-    tags: ["LoRa", "ESP32", "ESP8266"],
-    link: "https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html",
+    title: "Full-Stack IoT Monitoring Platform",
+    description: "Designed and implemented an end-to-end IoT data pipeline integrating embedded hardware, RESTful backend services, and a real-time web dashboard.",
+    image: Dashboard,
+    tags: ["ESP32", "DHT11", "Flask", "SQLite", "React (Vite)", "REST API"],
+    link: "https://github.com/amirphiladam2/FullStack-IoT",
   },
   {
     title: "Smart Home Automation",
@@ -26,6 +28,13 @@ const projects = [
     image: DisasterResilient,
     tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
     link: "https://techtacklenerd.blogspot.com/2025/11/disaster-resilient-hybrid-mesh.html",
+  },
+  {
+    title: "Wireless Sensor Network with LoRa",
+    description: "A complete wireless sensor network solution using LoRa technology for long-range communication.",
+    image: WirelessSensor,
+    tags: ["LoRa", "ESP32", "ESP8266"],
+    link: "https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html",
   },
 ];
 
