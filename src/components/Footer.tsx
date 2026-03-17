@@ -5,7 +5,7 @@ const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/amirphiladam", label: "LinkedIn" },
   { icon: Instagram, href: "https://instagram.com/amirphiladam", label: "Instagram" },
   { icon: Twitter, href: "https://twitter.com/amirphiladam", label: "Twitter" },
-  { icon: Youtube, href: "https://youtube.com/@amirdevstudio-1", label: "YouTube" },
+  { icon: Youtube, href: "https://youtube.com/@amirdevstudios", label: "YouTube" },
 ];
 
 const Footer = () => {

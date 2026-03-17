@@ -1,8 +1,24 @@
+import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    );
+
+    window.location.href = `mailto:amirphiladam@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
@@ -63,29 +79,39 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-6"
+            onSubmit={handleSubmit}
           >
             <div>
               <input
                 type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
                 placeholder="Your Name"
+                required
                 className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div>
               <input
                 type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder="Your Email"
+                required
                 className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div>
               <textarea
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
                 placeholder="Your Message"
                 rows={4}
+                required
                 className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none"
               />
             </div>
-            <Button variant="hero" size="lg" className="w-full">
+            <Button variant="hero" size="lg" className="w-full" type="submit">
               <Send size={18} />
               Send Message
             </Button>

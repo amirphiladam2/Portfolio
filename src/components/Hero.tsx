@@ -64,7 +64,7 @@ const Hero = () => {
                 </a>
               </Button>
               <Button variant="youtube" size="lg" asChild>
-                <a href="https://youtube.com/@amirdevstudio-1" target="_blank" rel="noopener noreferrer">
+                <a href="https://youtube.com/@amirdevstudios" target="_blank" rel="noopener noreferrer">
                   <Youtube size={20} />
                   AmirDevStudio
                 </a>
