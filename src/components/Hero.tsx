@@ -58,7 +58,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <Button variant="hero" size="lg" asChild>
-                <a href="/cv.pdf" download>
+                <a href="/mycv.pdf" download>
                   <Download size={20} />
                   Download CV
                 </a>
