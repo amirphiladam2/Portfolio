@@ -5,9 +5,17 @@ import Dashboard from "@/assets/Dashboard.png";
 import WirelessSensor from "@/assets/WirelessSensor.jpg";
 import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
+import OpenCV from "@/assets/OpenCV.jpeg";
 
 const projects = [
 
+  {
+    title: "Edge AI Smart Surveillance System",
+    description: "A real-time, stateful Edge AI-powered surveillance system built for the Raspberry Pi. It performs on-device human detection, utilizes spatial logic for virtual tripwires, serves a live local web dashboard, and sends instant asynchronous alerts via Telegram-all without relying on cloud processing.",
+    image: OpenCV,
+    tags: ["Raspberry Pi", "Python", "OpenCV", "TensorFlow Lite", "SQLite","Flask", "Telegram Bot API"],
+    link: "https://github.com/amirphiladam2/edge-ai-surveillance",
+  },
   {
     title: "Full-Stack IoT Monitoring Platform",
     description: "Designed and implemented an end-to-end IoT data pipeline integrating embedded hardware, RESTful backend services, and a real-time web dashboard.",
