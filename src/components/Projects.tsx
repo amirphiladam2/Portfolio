@@ -1,14 +1,21 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
-import Dashboard from "@/assets/Dashboard.png";
+import SmartBox from "@/assets/smart-box.jpeg";
 import WirelessSensor from "@/assets/WirelessSensor.jpg";
+import Dashboard from "@/assets/Dashboard.jpg";
 import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
 import OpenCV from "@/assets/OpenCV.jpeg";
 
 const projects = [
-
+  {
+    title:"IoT-Based Food Monitoring System",
+    description: "This is an end-to-end food freshness monitoring system built around an ESP32 smart food box, an AWS IoT ingestion pipeline, Firebase storage, and an Expo mobile app.The project lets a user pair a hardware device to their account, monitor live sensor readings, review recent history, and receive alerts when food conditions become unsafe.",
+    image: SmartBox,
+    tags: ["ESP32","MQ135", "DHT11", "AWS IoT Core","Lambda", "Firebase", "React Native (Expo)"],
+    link: "https://github.com/amirphiladam2/IoT-Based-Food-Monitoring-System",
+  },
   {
     title: "Edge AI Smart Surveillance System",
     description: "A real-time, stateful Edge AI-powered surveillance system built for the Raspberry Pi. It performs on-device human detection, utilizes spatial logic for virtual tripwires, serves a live local web dashboard, and sends instant asynchronous alerts via Telegram-all without relying on cloud processing.",
