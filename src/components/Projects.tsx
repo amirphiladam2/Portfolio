@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import SmartBox from "@/assets/smart-box.jpeg";
 import WirelessSensor from "@/assets/WirelessSensor.jpg";
-import Dashboard from "@/assets/Dashboard.jpg";
+import Dashboard from "@/assets/Dashboard.png";
 import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
 import OpenCV from "@/assets/OpenCV.jpeg";
