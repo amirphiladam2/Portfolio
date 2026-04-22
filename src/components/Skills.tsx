@@ -14,8 +14,14 @@ import {
   SiFlask,
   SiPostman,
   SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiSupabase,
+  SiFirebase,
 } from "@icons-pack/react-simple-icons";
-import { Radio } from "lucide-react";
+import { Radio, Server, LayoutTemplate, Cable, Smartphone, Cloud, Zap, Code, Wrench, Cpu, LineChart } from "lucide-react";
 import {
   fadeUpItem,
   sectionViewport,
@@ -24,23 +30,92 @@ import {
   staggerContainer,
 } from "@/lib/motion";
 
-const skills = [
-  { name: "C++", icon: SiCplusplus, color: "#6348FC" },
-  { name: "Raspberry Pi", icon: SiRaspberrypi, color: "#E70C43" },
-  { name: "ESP32", icon: SiEspressif, color: "#E7352C" },
-  { name: "STM32", icon: SiStmicroelectronics, color: "#0A6FF1" },
-  { name: "LoRa", icon: Radio, color: "#7C3AED" },
-  { name: "Arduino", icon: SiArduino, color: "#00979D" },
-  { name: "EasyEDA", icon: SiEasyeda, color: "#0883F7" },
-  { name: "MicroPython", icon: SiMicropython, color: "#FFFFFF" },
-  { name: "STM32CubeIDE", icon: SiStmicroelectronics, color: "#FFFFFF" },
-  { name: "PlatformIO", icon: SiPlatformio, color: "#EB780C" },
-  { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "GitHub", icon: SiGithub, color: "#FCC624" },
-  { name: "Postman", icon: SiPostman, color: "#F05032" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "#018DFF" },
-  { name: "Flask", icon: SiFlask, color: "#FFFFFF" },
-  { name: "Ubuntu", icon: SiUbuntu, color: "#E95420" },
+const categories = [
+  {
+    title: "Programming Languages",
+    icon: Code,
+    description: "The core languages and scripting tools I use to bring ideas to life.",
+    color: "from-blue-500/20 to-indigo-500/5",
+    accent: "text-blue-500",
+    skills: [
+      { name: "C / C++", icon: SiCplusplus, color: "#6348FC" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "MicroPython", icon: SiMicropython, color: "#FFFFFF" },
+    ],
+    className: "lg:col-span-2 md:col-span-2",
+  },
+  {
+    title: "Embedded & Hardware",
+    icon: Cpu,
+    description: "Architecting reliable firmware and interfacing with hardware at the lowest level.",
+    color: "from-teal-500/20 to-emerald-500/5",
+    accent: "text-teal-500",
+    skills: [
+      { name: "ESP32", icon: SiEspressif, color: "#E7352C" },
+      { name: "STM32", icon: SiStmicroelectronics, color: "#0A6FF1" },
+      { name: "Raspberry Pi", icon: SiRaspberrypi, color: "#E70C43" },
+      { name: "Arduino", icon: SiArduino, color: "#00979D" },
+    ],
+    className: "lg:col-span-1 md:col-span-1",
+  },
+  {
+    title: "Cloud & APIs",
+    icon: Server,
+    description: "Building backends and leveraging cloud services to ingest and serve telemetry data.",
+    color: "from-emerald-500/20 to-teal-500/5",
+    accent: "text-emerald-500",
+    skills: [
+      { name: "AWS IoT Core", icon: Cloud, color: "#232F3E" },
+      { name: "AWS Lambda", icon: Zap, color: "#FF9900" },
+      { name: "ThingSpeak", icon: LineChart, color: "#00B3E6" },
+      { name: "Flask", icon: SiFlask, color: "#FFFFFF" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#018DFF" },
+    ],
+    className: "lg:col-span-1 md:col-span-1",
+  },
+  {
+    title: "Protocols & IoT",
+    icon: Cable,
+    description: "Connecting devices to the edge and the cloud securely.",
+    color: "from-purple-500/20 to-fuchsia-500/5",
+    accent: "text-purple-500",
+    skills: [
+      { name: "LoRa", icon: Radio, color: "#7C3AED" },
+      { name: "I2C/SPI/UART", icon: Cable, color: "#A8B1FF" },
+    ],
+    className: "lg:col-span-1 md:col-span-1",
+  },
+  {
+    title: "Mobile App Dev",
+    icon: Smartphone,
+    description: "Creating native mobile applications that make hardware data intuitive.",
+    color: "from-orange-500/20 to-amber-500/5",
+    accent: "text-orange-500",
+    skills: [
+      { name: "React Native", icon: SiReact, color: "#61DAFB" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+    ],
+    className: "lg:col-span-1 md:col-span-1",
+  },
+  {
+    title: "Tools & Workflow",
+    icon: Wrench,
+    description: "The environment and utilities for modern engineering and PCB design.",
+    color: "from-rose-500/20 to-red-500/5",
+    accent: "text-rose-500",
+    skills: [
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "GitHub", icon: SiGithub, color: "#FCC624" },
+      { name: "PlatformIO", icon: SiPlatformio, color: "#EB780C" },
+      { name: "EasyEDA", icon: SiEasyeda, color: "#0883F7" },
+      { name: "Postman", icon: SiPostman, color: "#F05032" },
+      { name: "Ubuntu", icon: SiUbuntu, color: "#E95420" },
+    ],
+    className: "lg:col-span-3 md:col-span-2",
+  },
 ];
 
 const Skills = () => {
@@ -50,7 +125,7 @@ const Skills = () => {
     <section id="skills" className="relative overflow-hidden py-24">
       <div className="section-aura absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,12 +136,11 @@ const Skills = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
             Core Toolkit
           </p>
-          <h2 className="mb-4 font-display text-4xl font-bold md:text-5xl">
-            Tech <span className="text-primary">Stack</span>
+          <h2 className="mb-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            Technical <span className="text-primary">Arsenal</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            The tools I reach for when building connected devices, firmware
-            workflows, and polished interfaces around hardware.
+            The tools I reach for when building connected devices, firmware workflows, and polished interfaces around hardware.
           </p>
         </motion.div>
 
@@ -75,34 +149,37 @@ const Skills = () => {
           initial="hidden"
           whileInView="show"
           viewport={sectionViewport}
-          className="flex flex-wrap justify-center gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]"
         >
-          {skills.map((skill) => (
+          {categories.map((category) => (
             <motion.div
-              key={skill.name}
+              key={category.title}
               variants={fadeUpItem}
-              whileHover={
-                shouldReduceMotion ? undefined : { scale: 1.04, y: -6 }
-              }
+              whileHover={shouldReduceMotion ? undefined : { y: -4 }}
               transition={softSpring}
-              className="group"
-              style={{
-                boxShadow: `0 18px 42px -36px ${skill.color}`,
-              }}
+              className={`group relative overflow-hidden rounded-3xl border border-primary/10 bg-background/50 p-8 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 ${category.className}`}
             >
-              <div className="glass flex cursor-default items-center gap-3 rounded-full border border-primary/20 px-5 py-3 transition-all duration-300 group-hover:border-primary/45 group-hover:bg-background/80">
-                <div
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10"
-                  style={{ backgroundColor: `${skill.color}20` }}
-                >
-                  <skill.icon
-                    className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: skill.color }}
-                  />
+              <div 
+                className={`absolute inset-0 bg-gradient-to-br opacity-50 transition-opacity duration-300 group-hover:opacity-100 ${category.color}`} 
+              />
+              <div className="relative z-10 flex h-full flex-col">
+                <div className="mb-4 flex items-center justify-between">
+                  <category.icon className={`h-8 w-8 ${category.accent}`} />
                 </div>
-                <span className="font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
-                  {skill.name}
-                </span>
+                <h3 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{category.title}</h3>
+                <p className="mb-8 text-sm text-muted-foreground">{category.description}</p>
+                
+                <div className="mt-auto flex flex-wrap gap-3">
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex items-center gap-2 rounded-full border border-primary/20 bg-background/80 px-3 py-1.5 text-xs text-foreground/80 shadow-sm backdrop-blur-md transition-colors group-hover:border-primary/40"
+                    >
+                      <skill.icon className="h-4 w-4" style={{ color: skill.color }} />
+                      <span>{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

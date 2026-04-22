@@ -71,25 +71,32 @@ const Navbar = () => {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <div className="container mx-auto px-6 py-4">
+      <div className={`container mx-auto px-6 py-4 flex flex-col ${isScrolled ? "items-end" : "items-center"}`}>
         <motion.div
           layout
           transition={softSpring}
-          className={`relative flex items-center justify-between rounded-full px-4 py-3 transition-all duration-500 ${
+          className={`relative flex items-center justify-between rounded-full transition-all duration-500 w-full ${
             isScrolled
-              ? "border border-primary/15 bg-background/70 shadow-[0_25px_70px_-42px_hsl(var(--foreground)/0.65)] backdrop-blur-2xl"
-              : "glass border border-transparent"
+              ? "max-w-[56px] justify-center !p-1 border border-primary/15 bg-background/70 shadow-[0_25px_70px_-42px_hsl(var(--foreground)/0.65)] backdrop-blur-2xl"
+              : "px-4 py-3 glass border border-transparent"
           }`}
         >
-          <motion.a
-            href="#home"
-            whileHover={{ y: -2 }}
-            className="font-display text-2xl font-bold text-primary"
-          >
-            Amir<span className="text-accent">.</span>
-          </motion.a>
+          {!isScrolled && (
+            <motion.a
+              layout
+              href="#home"
+              whileHover={{ y: -2 }}
+              className="font-display text-2xl font-bold text-primary"
+            >
+              Amir<span className="text-accent">.</span>
+            </motion.a>
+          )}
 
-          <div className="hidden items-center gap-2 rounded-full border border-border/60 bg-background/40 p-2 backdrop-blur-xl md:flex">
+          <div
+            className={`items-center gap-2 rounded-full border border-border/60 bg-background/40 p-2 backdrop-blur-xl ${
+              isScrolled ? "hidden" : "hidden md:flex"
+            }`}
+          >
             {navLinks.map((link) => {
               const targetId = link.href.slice(1);
               const isActive = activeSection === targetId;
@@ -120,24 +127,32 @@ const Navbar = () => {
             })}
           </div>
 
-          <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/15 bg-background/55 text-foreground backdrop-blur-xl transition-colors duration-300 hover:border-primary/35 hover:text-primary md:hidden"
+          <motion.button
+            layout
+            className={`inline-flex items-center justify-center rounded-full text-foreground transition-colors duration-300 hover:text-primary ${
+              isScrolled
+                ? "h-11 w-11 flex text-primary"
+                : "h-11 w-11 flex md:hidden border border-primary/15 bg-background/55 backdrop-blur-xl hover:border-primary/35"
+            }`}
             onClick={() => setIsOpen((open) => !open)}
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          </motion.button>
         </motion.div>
 
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              layout
               initial={{ opacity: 0, y: -16, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={softSpring}
-              className="glass mt-3 overflow-hidden rounded-3xl border border-primary/15 p-3 shadow-[0_28px_80px_-48px_hsl(var(--foreground)/0.85)] md:hidden"
+              className={`glass mt-3 overflow-hidden rounded-3xl border border-primary/15 p-3 shadow-[0_28px_80px_-48px_hsl(var(--foreground)/0.85)] ${
+                isScrolled ? "block min-w-48 ml-auto" : "md:hidden w-full"
+              }`}
             >
               {navLinks.map((link, index) => {
                 const targetId = link.href.slice(1);

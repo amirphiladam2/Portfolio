@@ -64,7 +64,7 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative isolate flex min-h-screen items-center overflow-hidden pt-20"
+      className="relative isolate flex min-h-screen items-center overflow-x-hidden pt-20"
     >
       <div className="hero-grid absolute inset-0 -z-20 opacity-70" />
       <motion.div
@@ -118,7 +118,7 @@ const Hero = () => {
 
             <motion.h1
               variants={fadeUpItem}
-              className="mb-5 font-display text-5xl font-bold tracking-tight text-foreground md:text-7xl"
+              className="mb-5 font-display text-5xl font-bold tracking-tighter text-foreground md:text-7xl"
             >
               Amir{" "}
               <span className="bg-gradient-to-r from-primary via-foreground to-accent bg-clip-text text-transparent">
