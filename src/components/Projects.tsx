@@ -22,6 +22,7 @@ import {
   softSpring,
   staggerContainer,
 } from "@/lib/motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
   {
@@ -105,7 +106,8 @@ const ProjectCard = ({
   project: Project;
   index: number;
 }) => {
-  const shouldReduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const shouldReduceMotion = useReducedMotion() || isMobile;
   const mouseX = useMotionValue(50);
   const mouseY = useMotionValue(50);
   const smoothX = useSpring(mouseX, cardSpring);
@@ -268,7 +270,7 @@ const Projects = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={sectionViewport}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         >
           {projects.map((project, index) => (

@@ -121,7 +121,7 @@ const Hero = () => {
               className="mb-5 font-display text-5xl font-bold tracking-tighter text-foreground md:text-7xl"
             >
               Amir{" "}
-              <span className="bg-gradient-to-r from-primary via-foreground to-accent bg-clip-text text-transparent">
+              <span className="text-primary">
                 P.Adam
               </span>
             </motion.h1>
@@ -188,9 +188,9 @@ const Hero = () => {
 
             <motion.div
               variants={fadeUpItem}
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row gap-4 w-full"
             >
-              <Button variant="hero" size="lg" asChild>
+              <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
                 <a href="/mycv.pdf" download>
                   <Download size={20} />
                   Download CV
@@ -199,7 +199,7 @@ const Hero = () => {
               <Button
                 variant="youtube"
                 size="lg"
-                className="hover:gap-3"
+                className="hover:gap-3 w-full sm:w-auto"
                 asChild
               >
                 <a
@@ -253,7 +253,7 @@ const Hero = () => {
                 className="absolute inset-0 rounded-full bg-primary/10 blur-3xl"
               />
 
-              <div className="profile-shell relative h-72 w-72 overflow-hidden rounded-[2.75rem] border border-primary/20 md:h-96 md:w-96">
+              <div className="profile-shell relative h-72 w-72 overflow-hidden rounded-full border border-primary/20 md:h-96 md:w-96">
                 <div className="hero-scan-line" aria-hidden />
                 <div
                   aria-hidden
