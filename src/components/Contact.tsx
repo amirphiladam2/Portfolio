@@ -2,6 +2,29 @@ import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "./ui/button";
+import {
+  fadeUpItem,
+  sectionViewport,
+  smoothEase,
+  staggerContainer,
+} from "@/lib/motion";
+
+const contactItems = [
+  {
+    icon: Mail,
+    title: "Email",
+    value: "amirphiladam@gmail.com",
+    href: "mailto:amirphiladam@gmail.com",
+  },
+  {
+    icon: MapPin,
+    title: "Location",
+    value: "Available Worldwide",
+  },
+];
+
+const inputClassName =
+  "w-full rounded-2xl border border-border/80 bg-background/70 px-4 py-3 text-foreground transition-all duration-300 placeholder:text-muted-foreground focus:border-primary/45 focus:outline-none focus:ring-4 focus:ring-primary/10";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -20,97 +43,134 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="relative overflow-hidden py-24">
+      <div className="section-aura section-aura-accent absolute right-0 top-12 h-80 w-80 rounded-full" />
+
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={sectionViewport}
+          transition={{ duration: 0.7, ease: smoothEase }}
+          className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
+            Let&apos;s Connect
+          </p>
+          <h2 className="mb-4 font-display text-4xl font-bold md:text-5xl">
             Get In <span className="text-primary">Touch</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's work together!
+          <p className="text-lg text-muted-foreground">
+            If you have an embedded systems project, internship opportunity, or
+            an idea worth prototyping, I&apos;d love to hear about it.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Contact Info */}
+        <div className="grid max-w-5xl gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-start">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={sectionViewport}
+            className="space-y-5"
           >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
-                <Mail className="text-primary" size={20} />
+            <motion.div
+              variants={fadeUpItem}
+              className="glass rounded-[2rem] border border-primary/15 p-6 shadow-[0_24px_80px_-48px_hsl(var(--foreground)/0.85)]"
+            >
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-3 py-2 text-sm text-primary">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Open to internships and collaborations
               </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                <a
-                  href="mailto:amirphiladam@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  amirphiladam@gmail.com
-                </a>
-              </div>
-            </div>
+              <p className="text-muted-foreground">
+                I enjoy working where hardware reliability and product
+                experience meet. That can mean firmware, data acquisition,
+                dashboards, automation, or turning a rough prototype into
+                something polished.
+              </p>
+            </motion.div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
-                <MapPin className="text-primary" size={20} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-1">Location</h3>
-                <p className="text-muted-foreground">Available Worldwide</p>
-              </div>
-            </div>
+            {contactItems.map((item) => (
+              <motion.div
+                key={item.title}
+                variants={fadeUpItem}
+                className="glass rounded-[1.75rem] border border-primary/10 p-5"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary">
+                    <item.icon size={20} />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-muted-foreground transition-colors duration-300 hover:text-primary"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-muted-foreground">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Contact Form */}
           <motion.form
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            viewport={sectionViewport}
+            transition={{ duration: 0.7, ease: smoothEase }}
+            className="glass space-y-5 rounded-[2rem] border border-primary/15 p-6 shadow-[0_28px_90px_-50px_hsl(var(--foreground)/0.85)]"
             onSubmit={handleSubmit}
           >
-            <div>
-              <input
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                placeholder="Your Name"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground"
-              />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm font-medium text-foreground/80">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="Enter your name"
+                  required
+                  className={inputClassName}
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-foreground/80">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter your email address"
+                  required
+                  className={inputClassName}
+                />
+              </div>
             </div>
+
             <div>
-              <input
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="Your Email"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground"
-              />
-            </div>
-            <div>
+              <label className="mb-2 block text-sm font-medium text-foreground/80">
+                Message
+              </label>
               <textarea
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
-                placeholder="Your Message"
-                rows={4}
+                placeholder="Tell me a little about the project or opportunity."
+                rows={6}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all duration-300 text-foreground placeholder:text-muted-foreground resize-none"
+                className={`${inputClassName} resize-none`}
               />
             </div>
+
             <Button variant="hero" size="lg" className="w-full" type="submit">
               <Send size={18} />
               Send Message
