@@ -60,7 +60,7 @@ const categories = [
     className: "lg:col-span-1 md:col-span-1",
   },
   {
-    title: "Cloud & APIs",
+    title: "Backend & Cloud Infrastructure",
     icon: Server,
     description: "Building backends and leveraging cloud services to ingest and serve telemetry data.",
     color: "from-emerald-500/20 to-teal-500/5",
@@ -82,7 +82,9 @@ const categories = [
     accent: "text-purple-500",
     skills: [
       { name: "LoRa", icon: Radio, color: "#7C3AED" },
-      { name: "I2C/SPI/UART", icon: Cable, color: "#A8B1FF" },
+      { name: "MQTT", icon: LayoutTemplate, color: "#FF6F61" },
+      { name: "HTTP/REST", icon: Server, color: "#4A90E2" },
+      { name: "I2C•SPI•UART", icon: Cable, color: "#A8B1FF" },
     ],
     className: "lg:col-span-1 md:col-span-1",
   },
@@ -90,8 +92,8 @@ const categories = [
     title: "Mobile App Dev",
     icon: Smartphone,
     description: "Creating native mobile applications that make hardware data intuitive.",
-    color: "from-orange-500/20 to-amber-500/5",
-    accent: "text-orange-500",
+    color: "from-blue-1002-500/20 to-amber-500/5",
+    accent: "text-blue-500",
     skills: [
       { name: "React Native", icon: SiReact, color: "#61DAFB" },
       { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
@@ -112,7 +114,7 @@ const categories = [
       { name: "PlatformIO", icon: SiPlatformio, color: "#EB780C" },
       { name: "EasyEDA", icon: SiEasyeda, color: "#0883F7" },
       { name: "Postman", icon: SiPostman, color: "#F05032" },
-      { name: "Ubuntu", icon: SiUbuntu, color: "#E95420" },
+   
     ],
     className: "lg:col-span-3 md:col-span-2",
   },
