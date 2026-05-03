@@ -29,6 +29,7 @@ import {
   softSpring,
   staggerContainer,
 } from "@/lib/motion";
+import { useHasFinePointer } from "@/hooks/use-has-fine-pointer";
 
 const categories = [
   {
@@ -92,7 +93,7 @@ const categories = [
     title: "Mobile App Dev",
     icon: Smartphone,
     description: "Creating native mobile applications that make hardware data intuitive.",
-    color: "from-blue-1002-500/20 to-amber-500/5",
+    color: "from-blue-500/20 to-amber-500/5",
     accent: "text-blue-500",
     skills: [
       { name: "React Native", icon: SiReact, color: "#61DAFB" },
@@ -122,12 +123,14 @@ const categories = [
 
 const Skills = () => {
   const shouldReduceMotion = useReducedMotion();
+  const hasFinePointer = useHasFinePointer();
+  const shouldLiftCards = !shouldReduceMotion && hasFinePointer;
 
   return (
-    <section id="skills" className="relative overflow-hidden py-24">
+    <section id="skills" className="relative overflow-hidden py-20 sm:py-24">
       <div className="section-aura absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full" />
 
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,10 +141,10 @@ const Skills = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
             Core Toolkit
           </p>
-          <h2 className="mb-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-4 font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Technical <span className="text-primary">Arsenal</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base text-muted-foreground sm:text-lg">
             The tools I reach for when building connected devices, firmware workflows, and polished interfaces around hardware.
           </p>
         </motion.div>
@@ -151,15 +154,15 @@ const Skills = () => {
           initial="hidden"
           whileInView="show"
           viewport={sectionViewport}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]"
+          className="grid auto-rows-[minmax(200px,auto)] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
         >
           {categories.map((category) => (
             <motion.div
               key={category.title}
               variants={fadeUpItem}
-              whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+              whileHover={shouldLiftCards ? { y: -4 } : undefined}
               transition={softSpring}
-              className={`group relative overflow-hidden rounded-3xl border border-primary/10 bg-background/50 p-8 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 ${category.className}`}
+              className={`group relative overflow-hidden rounded-3xl border border-primary/10 bg-background/50 p-6 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 sm:p-8 ${category.className}`}
             >
               <div 
                 className={`absolute inset-0 bg-gradient-to-br opacity-50 transition-opacity duration-300 group-hover:opacity-100 ${category.color}`} 
@@ -168,7 +171,7 @@ const Skills = () => {
                 <div className="mb-4 flex items-center justify-between">
                   <category.icon className={`h-8 w-8 ${category.accent}`} />
                 </div>
-                <h3 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{category.title}</h3>
+                <h3 className="mb-2 text-lg font-semibold tracking-tight text-foreground sm:text-xl">{category.title}</h3>
                 <p className="mb-8 text-sm text-muted-foreground">{category.description}</p>
                 
                 <div className="mt-auto flex flex-wrap gap-3">

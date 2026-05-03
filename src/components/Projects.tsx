@@ -1,4 +1,4 @@
-import { type MouseEvent } from "react";
+import { type PointerEvent } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 import SmartBox from "@/assets/smart-box.jpeg";
 import WirelessSensor from "@/assets/WirelessSensor.jpg";
 import Dashboard from "@/assets/Dashboard.png";
@@ -22,6 +23,7 @@ import {
   softSpring,
   staggerContainer,
 } from "@/lib/motion";
+import { useHasFinePointer } from "@/hooks/use-has-fine-pointer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
@@ -107,7 +109,9 @@ const ProjectCard = ({
   index: number;
 }) => {
   const isMobile = useIsMobile();
-  const shouldReduceMotion = useReducedMotion() || isMobile;
+  const hasFinePointer = useHasFinePointer();
+  const shouldReduceMotion =
+    useReducedMotion() || isMobile || !hasFinePointer;
   const mouseX = useMotionValue(50);
   const mouseY = useMotionValue(50);
   const smoothX = useSpring(mouseX, cardSpring);
@@ -132,7 +136,7 @@ const ProjectCard = ({
   );
   const spotlight = useMotionTemplate`radial-gradient(circle at ${smoothX}% ${smoothY}%, hsl(var(--primary) / 0.24), transparent 48%)`;
 
-  const handlePointerMove = (event: MouseEvent<HTMLDivElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) {
       return;
     }
@@ -154,9 +158,9 @@ const ProjectCard = ({
     <motion.div
       variants={fadeUpItem}
       transition={{ duration: 0.7, ease: smoothEase, delay: index * 0.08 }}
-      className="group h-full [perspective:1400px]"
-      onMouseMove={handlePointerMove}
-      onMouseLeave={handlePointerLeave}
+      className={cn("group h-full", !shouldReduceMotion && "[perspective:1400px]")}
+      onPointerMove={shouldReduceMotion ? undefined : handlePointerMove}
+      onPointerLeave={shouldReduceMotion ? undefined : handlePointerLeave}
     >
       <motion.article
         whileHover={shouldReduceMotion ? undefined : { y: -10 }}
@@ -170,7 +174,7 @@ const ProjectCard = ({
                 transformStyle: "preserve-3d",
               }
         }
-        className="relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/80 shadow-[0_28px_90px_-56px_hsl(var(--foreground)/0.65)] backdrop-blur-xl"
+        className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/70 bg-card/80 shadow-[0_28px_90px_-56px_hsl(var(--foreground)/0.65)] backdrop-blur-xl sm:rounded-[1.75rem]"
       >
         <motion.div
           aria-hidden
@@ -179,10 +183,13 @@ const ProjectCard = ({
         />
         <div className="absolute inset-x-8 top-0 z-10 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="relative aspect-[16/11] overflow-hidden sm:aspect-[16/10]">
           <motion.img
             src={project.image}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
             className="h-full w-full object-cover"
             style={{
               x: imageX,
@@ -203,14 +210,19 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-1 flex-col p-6 [transform:translateZ(20px)]">
+        <div
+          className={cn(
+            "relative z-10 flex flex-1 flex-col p-5 sm:p-6",
+            !shouldReduceMotion && "[transform:translateZ(20px)]",
+          )}
+        >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary/75">
             Featured Build
           </p>
-          <h3 className="mb-3 font-display text-2xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+          <h3 className="mb-3 font-display text-xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-2xl">
             {project.title}
           </h3>
-          <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+          <p className="mb-6 text-sm leading-6 text-muted-foreground">
             {project.description}
           </p>
           <div className="mb-6 flex flex-wrap gap-2">
@@ -225,8 +237,8 @@ const ProjectCard = ({
           </div>
           <Button
             variant="outline"
-            size="sm"
-            className="mt-auto w-fit border-primary/25 bg-background/60 backdrop-blur-md hover:border-primary/45"
+            size="default"
+            className="mt-auto min-h-11 w-full justify-center border-primary/25 bg-background/60 backdrop-blur-md hover:border-primary/45 sm:w-fit"
             asChild
           >
             <a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -242,11 +254,11 @@ const ProjectCard = ({
 
 const Projects = () => {
   return (
-    <section id="portfolio" className="relative overflow-hidden py-24">
+    <section id="portfolio" className="relative overflow-hidden py-20 sm:py-24">
       <div className="section-aura absolute -right-32 top-16 h-80 w-80 rounded-full" />
       <div className="section-aura section-aura-accent absolute -left-24 bottom-12 h-72 w-72 rounded-full" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -257,10 +269,10 @@ const Projects = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
             Selected Work
           </p>
-          <h2 className="mb-4 font-display text-4xl font-bold md:text-5xl">
+          <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl md:text-5xl">
             Featured <span className="text-primary">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base text-muted-foreground sm:text-lg">
             A few builds where embedded systems, sensing, networking, and UX
             came together as one product experience.
           </p>
@@ -271,7 +283,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3"
         >
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
@@ -285,9 +297,14 @@ const Projects = () => {
           transition={{ duration: 0.65, ease: smoothEase, delay: 0.15 }}
           className="mt-14 text-center"
         >
-          <Button variant="hero" size="lg" asChild>
+          <Button
+            variant="hero"
+            size="lg"
+            className="w-full sm:w-auto"
+            asChild
+          >
             <a
-              href="https://amirp.netlify.app/portfolio"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
             >

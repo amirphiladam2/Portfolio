@@ -10,21 +10,21 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-8 border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
+    <footer className="py-8">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="text-center text-sm text-muted-foreground md:text-left">
             © {new Date().getFullYear()} Amir P. Adam. All rights reserved.
           </p>
           
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:justify-end">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-300 hover:bg-primary/10 hover:text-primary"
                 aria-label={social.label}
               >
                 <social.icon size={20} />

@@ -43,10 +43,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-24">
+    <section id="contact" className="relative overflow-hidden py-20 sm:py-24">
       <div className="section-aura section-aura-accent absolute right-0 top-12 h-80 w-80 rounded-full" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,10 +57,10 @@ const Contact = () => {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
             Let&apos;s Connect
           </p>
-          <h2 className="mb-4 font-display text-4xl font-bold md:text-5xl">
+          <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl md:text-5xl">
             Get In <span className="text-primary">Touch</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base text-muted-foreground sm:text-lg">
             If you have an embedded systems project, internship opportunity, or
             an idea worth prototyping, I&apos;d love to hear about it.
           </p>
@@ -76,7 +76,7 @@ const Contact = () => {
           >
             <motion.div
               variants={fadeUpItem}
-              className="glass rounded-[2rem] border border-primary/15 p-6 shadow-[0_24px_80px_-48px_hsl(var(--foreground)/0.85)]"
+              className="glass rounded-[2rem] border border-primary/15 p-5 shadow-[0_24px_80px_-48px_hsl(var(--foreground)/0.85)] sm:p-6"
             >
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-3 py-2 text-sm text-primary">
                 <span className="h-2 w-2 rounded-full bg-primary" />
@@ -125,7 +125,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={sectionViewport}
             transition={{ duration: 0.7, ease: smoothEase }}
-            className="glass space-y-5 rounded-[2rem] border border-primary/15 p-6 shadow-[0_28px_90px_-50px_hsl(var(--foreground)/0.85)]"
+            className="glass space-y-5 rounded-[2rem] border border-primary/15 p-5 shadow-[0_28px_90px_-50px_hsl(var(--foreground)/0.85)] sm:p-6"
             onSubmit={handleSubmit}
           >
             <div className="grid gap-5 sm:grid-cols-2">

@@ -22,6 +22,8 @@ import {
   softSpring,
   staggerContainer,
 } from "@/lib/motion";
+import { useHasFinePointer } from "@/hooks/use-has-fine-pointer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/amirphiladam2", label: "GitHub" },
@@ -38,7 +40,10 @@ const focusAreas = [
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const hasFinePointer = useHasFinePointer();
+  const shouldReduceMotion =
+    useReducedMotion() || isMobile || !hasFinePointer;
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -64,9 +69,9 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative isolate flex min-h-screen items-center overflow-x-hidden pt-20"
+      className="relative isolate flex min-h-[100svh] items-center overflow-x-hidden pb-12 pt-24 sm:pb-16 lg:min-h-screen"
     >
-      <div className="hero-grid absolute inset-0 -z-20 opacity-70" />
+      <div className="hero-grid absolute inset-0 -z-20 opacity-30" />
       <motion.div
         aria-hidden
         className="hero-blob hero-blob-primary absolute -left-20 top-24 -z-10 h-72 w-72 rounded-full"
@@ -88,10 +93,10 @@ const Hero = () => {
         className="absolute left-0 top-[58vh] h-px w-px"
       />
 
-      <div className="container mx-auto px-6">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="container mx-auto px-5 sm:px-6">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <motion.div
-            className="order-2 lg:order-1"
+            className="order-1"
             style={{ y: contentY }}
             variants={staggerContainer}
             initial="hidden"
@@ -118,7 +123,7 @@ const Hero = () => {
 
             <motion.h1
               variants={fadeUpItem}
-              className="mb-5 font-display text-5xl font-bold tracking-tighter text-foreground md:text-7xl"
+              className="mb-5 font-display text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-7xl"
             >
               Amir{" "}
               <span className="text-primary">
@@ -128,7 +133,7 @@ const Hero = () => {
 
             <motion.h2
               variants={fadeUpItem}
-              className="mb-6 max-w-2xl text-2xl leading-tight text-foreground md:text-4xl"
+              className="mb-6 max-w-2xl text-xl leading-tight text-foreground sm:text-2xl md:text-4xl"
             >
               I build connected hardware experiences with thoughtful firmware,
               reliable telemetry, and user-facing dashboards that make devices
@@ -137,13 +142,13 @@ const Hero = () => {
 
             <motion.p
               variants={fadeUpItem}
-              className="mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground"
+              className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              Embedded Systems and IoT engineering student with hands-on
-              experience in C/C++ and Python across ESP32, STM32, and
-              Raspberry Pi platforms. I enjoy turning sensors, communication
-              protocols, and debugging sessions into end-to-end systems that
-              are practical, resilient, and easy to understand.
+              Electronics and Communication Engineering graduate focused on
+              Embedded Systems and IoT. I build end-to-end connected systems
+              using C/C++ and Python across ESP32, STM32, and Raspberry Pi,
+              with hands-on experience in firmware, sensor integration,
+              communication protocols, telemetry, and system bring-up. 
             </motion.p>
 
             <motion.div
@@ -153,7 +158,7 @@ const Hero = () => {
               {focusAreas.map((focus) => (
                 <span
                   key={focus}
-                  className="rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm text-foreground/85 shadow-[0_12px_30px_-24px_hsl(var(--primary)/0.55)]"
+                  className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm text-foreground/85 shadow-[0_12px_30px_-24px_hsl(var(--primary)/0.55)] sm:px-4 sm:py-2"
                 >
                   {focus}
                 </span>
@@ -175,7 +180,7 @@ const Hero = () => {
                   }
                   whileTap={{ scale: 0.97 }}
                   transition={softSpring}
-                  className="group inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/20 bg-background/75 text-primary shadow-[0_16px_40px_-28px_hsl(var(--primary)/0.75)] backdrop-blur-xl transition-colors duration-300 hover:border-primary/40 hover:text-primary"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-background/75 text-primary shadow-[0_16px_40px_-28px_hsl(var(--primary)/0.75)] backdrop-blur-xl transition-colors duration-300 hover:border-primary/40 hover:text-primary sm:h-12 sm:w-12"
                   aria-label={social.label}
                 >
                   <social.icon
@@ -188,9 +193,14 @@ const Hero = () => {
 
             <motion.div
               variants={fadeUpItem}
-              className="flex flex-col sm:flex-row gap-4 w-full"
+              className="flex w-full flex-col gap-4 sm:flex-row"
             >
-              <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
+              <Button
+                variant="hero"
+                size="lg"
+                className="min-h-12 w-full justify-center sm:w-auto"
+                asChild
+              >
                 <a href="/mycv.pdf" download>
                   <Download size={20} />
                   Download CV
@@ -199,7 +209,7 @@ const Hero = () => {
               <Button
                 variant="youtube"
                 size="lg"
-                className="hover:gap-3 w-full sm:w-auto"
+                className="min-h-12 w-full justify-center hover:gap-3 sm:w-auto"
                 asChild
               >
                 <a
@@ -216,17 +226,17 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="order-1 flex justify-center lg:order-2"
+            className="order-2 flex justify-center"
             style={{ y: imageY }}
             variants={fadeInItem}
             initial="hidden"
             whileInView="show"
             viewport={sectionViewport}
           >
-            <div className="relative flex h-[380px] w-[320px] items-center justify-center md:h-[470px] md:w-[440px]">
+            <div className="relative flex h-[300px] w-full max-w-[320px] items-center justify-center sm:h-[380px] md:h-[470px] md:max-w-[440px]">
               <motion.div
                 aria-hidden
-                className="absolute inset-10 rounded-full border border-dashed border-primary/20"
+                className="absolute inset-6 rounded-full border border-dashed border-primary/20 sm:inset-10"
                 animate={
                   shouldReduceMotion ? undefined : { rotate: 360 }
                 }
@@ -238,7 +248,7 @@ const Hero = () => {
               />
               <motion.div
                 aria-hidden
-                className="absolute inset-16 rounded-full border border-accent/20"
+                className="absolute inset-12 rounded-full border border-accent/20 sm:inset-16"
                 animate={
                   shouldReduceMotion ? undefined : { rotate: -360 }
                 }
@@ -253,34 +263,40 @@ const Hero = () => {
                 className="absolute inset-0 rounded-full bg-primary/10 blur-3xl"
               />
 
-              <div className="profile-shell relative h-72 w-72 overflow-hidden rounded-full border border-primary/20 md:h-96 md:w-96">
-                <div className="hero-scan-line" aria-hidden />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.22),transparent_42%),linear-gradient(180deg,hsl(var(--background)/0),hsl(var(--background)/0.06)_80%,hsl(var(--background)/0.3))]"
-                />
-                <motion.img
-                  src={profileImage}
-                  alt="Amir P. Adam"
-                  className="relative z-10 h-full w-full scale-[1.04] object-cover object-top"
-                  animate={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          y: [0, -10, 0],
-                          rotate: [-1, 1, -1],
-                        }
-                  }
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-background/60 to-transparent"
-                />
+              <div className="profile-ring h-60 w-60 rounded-full p-[2px] sm:h-72 sm:w-72 sm:p-[3px] md:h-96 md:w-96">
+                <div className="profile-shell relative h-full w-full overflow-hidden rounded-full border border-primary/20">
+                  {!shouldReduceMotion && <div className="hero-scan-line" aria-hidden />}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.22),transparent_42%),linear-gradient(180deg,hsl(var(--background)/0),hsl(var(--background)/0.06)_80%,hsl(var(--background)/0.3))]"
+                  />
+                  <motion.img
+                    src={profileImage}
+                    alt="Amir P. Adam"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    sizes="(max-width: 767px) 240px, (max-width: 1023px) 288px, 384px"
+                    className="relative z-10 h-full w-full scale-[1.04] object-cover object-top"
+                    animate={
+                      shouldReduceMotion
+                        ? undefined
+                        : {
+                            y: [0, -10, 0],
+                            rotate: [-1, 1, -1],
+                          }
+                    }
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-background/60 to-transparent"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>

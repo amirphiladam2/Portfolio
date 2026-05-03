@@ -71,14 +71,14 @@ const Navbar = () => {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <div className={`container mx-auto px-6 py-4 flex flex-col ${isScrolled ? "items-end" : "items-center"}`}>
+      <div className={`container mx-auto flex flex-col px-4 py-3 sm:px-6 sm:py-4 ${isScrolled ? "items-end" : "items-center"}`}>
         <motion.div
           layout
           transition={softSpring}
           className={`relative flex items-center justify-between rounded-full transition-all duration-500 w-full ${
             isScrolled
               ? "max-w-[56px] justify-center !p-1 border border-primary/15 bg-background/70 shadow-[0_25px_70px_-42px_hsl(var(--foreground)/0.65)] backdrop-blur-2xl"
-              : "px-4 py-3 glass border border-transparent"
+              : "glass border border-transparent px-3 py-2.5 sm:px-4 sm:py-3"
           }`}
         >
           {!isScrolled && (
@@ -151,7 +151,7 @@ const Navbar = () => {
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={softSpring}
               className={`glass mt-3 overflow-hidden rounded-3xl border border-primary/15 p-3 shadow-[0_28px_80px_-48px_hsl(var(--foreground)/0.85)] ${
-                isScrolled ? "block min-w-48 ml-auto" : "md:hidden w-full"
+                isScrolled ? "ml-auto block min-w-48" : "w-full md:hidden"
               }`}
             >
               {navLinks.map((link, index) => {

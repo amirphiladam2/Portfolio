@@ -6,32 +6,32 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 25% 10%;
+    --background: 222 28% 8%;
+    --foreground: 210 20% 96%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 220 25% 10%;
+    --card: 222 22% 11%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover: 222 22% 11%;
+    --popover-foreground: 210 20% 96%;
 
     --primary: 180 70% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 95%;
-    --secondary-foreground: 220 25% 10%;
+    --secondary: 222 18% 15%;
+    --secondary-foreground: 210 20% 96%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 222 18% 14%;
+    --muted-foreground: 215 14% 68%;
 
-    --accent: 300 60% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 222 18% 16%;
+    --accent-foreground: 210 20% 96%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
+    --border: 222 16% 20%;
+    --input: 222 16% 20%;
     --ring: 180 70% 40%;
 
     --radius: 0.75rem;
@@ -79,10 +79,9 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image:
-      radial-gradient(circle at top left, hsl(var(--primary) / 0.08), transparent 30%),
-      radial-gradient(circle at 85% 10%, hsl(var(--accent) / 0.07), transparent 28%);
-    background-attachment: fixed;
+    background-color: hsl(var(--background));
+    background-image: none;
+    background-attachment: scroll;
   }
 
   #root {
@@ -100,30 +99,30 @@
   }
 
   .glass {
-    background: hsl(var(--card) / 0.8);
-    backdrop-filter: blur(20px);
+    background: hsl(var(--card) / 0.84);
+    backdrop-filter: blur(18px);
     border: 1px solid hsl(var(--border));
   }
 
   .hero-grid {
     background-image:
-      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
-    background-size: 54px 54px;
+      linear-gradient(hsl(var(--border) / 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.22) 1px, transparent 1px);
+    background-size: 56px 56px;
     mask-image: radial-gradient(circle at center, black 45%, transparent 82%);
   }
 
   .hero-blob {
-    filter: blur(60px);
-    opacity: 0.9;
+    filter: blur(88px);
+    opacity: 0.18;
   }
 
   .hero-blob-primary {
-    background: hsl(var(--primary) / 0.22);
+    background: hsl(var(--primary) / 0.08);
   }
 
   .hero-blob-accent {
-    background: hsl(var(--accent) / 0.18);
+    background: hsl(var(--primary) / 0.05);
   }
 
   .profile-shell {
@@ -133,6 +132,20 @@
       0 30px 80px -45px hsl(var(--foreground) / 0.85),
       inset 0 1px 0 hsl(var(--primary) / 0.28);
     backdrop-filter: blur(18px);
+  }
+
+  .profile-ring {
+    background:
+      linear-gradient(
+        145deg,
+        hsl(var(--primary) / 0.95) 0%,
+        hsl(var(--primary) / 0.28) 35%,
+        hsl(0 0% 100% / 0.18) 60%,
+        hsl(var(--primary) / 0.55) 100%
+      );
+    box-shadow:
+      0 0 0 1px hsl(var(--primary) / 0.12),
+      0 24px 60px -36px hsl(var(--primary) / 0.35);
   }
 
   .hero-scan-line {
@@ -160,12 +173,13 @@
   }
 
   .section-aura {
-    background: hsl(var(--primary) / 0.12);
-    filter: blur(85px);
+    background: hsl(var(--primary) / 0.04);
+    filter: blur(120px);
+    opacity: 0.2;
   }
 
   .section-aura-accent {
-    background: hsl(var(--accent) / 0.1);
+    background: hsl(var(--primary) / 0.03);
   }
 
   .animate-float {
@@ -228,5 +242,35 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  body {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .glass {
+    backdrop-filter: blur(12px);
+  }
+
+  .profile-shell {
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-grid {
+    background-size: 42px 42px;
+  }
+
+  .hero-blob {
+    filter: blur(64px);
+    opacity: 0.12;
+  }
+
+  .section-aura {
+    filter: blur(88px);
+    opacity: 0.14;
   }
 }
