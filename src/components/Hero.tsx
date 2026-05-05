@@ -69,7 +69,7 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative isolate flex min-h-[100svh] items-center overflow-x-hidden pb-12 pt-24 sm:pb-16 lg:min-h-screen"
+      className="relative isolate flex min-h-[100svh] items-center overflow-x-hidden pb-12 pt-32 sm:pt-40 lg:pt-48 lg:min-h-screen"
     >
       <div className="hero-grid absolute inset-0 -z-20 opacity-30" />
       <motion.div
