@@ -17,7 +17,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         hero: "bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 hover:scale-105 transition-all duration-300",
         youtube:
-          "border border-[#ff8aa4]/40 bg-[linear-gradient(135deg,#ff1947_0%,#ff3131_48%,#b10018_100%)] text-white shadow-[0_20px_45px_-24px_rgba(255,25,71,0.85)] hover:scale-105 hover:shadow-[0_24px_55px_-20px_rgba(255,25,71,0.95)]",
+          "bg-[#FF0000] text-white font-semibold hover:bg-[#cc0000] hover:scale-105 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
