@@ -165,7 +165,7 @@ const Skills = () => {
               className={`group relative overflow-hidden rounded-3xl border border-primary/10 bg-background/50 p-6 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 sm:p-8 ${category.className}`}
             >
               <div 
-                className={`absolute inset-0 bg-gradient-to-br opacity-50 transition-opacity duration-300 group-hover:opacity-100 ${category.color}`} 
+                className={`absolute inset-0 bg-transparent opacity-50 transition-opacity duration-300 group-hover:opacity-100 `} 
               />
               <div className="relative z-10 flex h-full flex-col">
                 <div className="mb-4 flex items-center justify-between">
@@ -178,7 +178,7 @@ const Skills = () => {
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="flex items-center gap-2 rounded-full border border-primary/20 bg-background/80 px-3 py-1.5 text-xs text-foreground/80 shadow-sm backdrop-blur-md transition-colors group-hover:border-primary/40"
+                      className="flex items-center gap-2 rounded-full border border-primary/20 bg-background/80 px-3 py-1.5 text-xs text-foreground/80 backdrop-blur-md transition-colors group-hover:border-primary/40"
                     >
                       <skill.icon className="h-4 w-4" style={{ color: skill.color }} />
                       <span>{skill.name}</span>

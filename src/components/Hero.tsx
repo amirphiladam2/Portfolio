@@ -84,7 +84,7 @@ const Hero = () => {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,hsl(var(--background)/0),hsl(var(--background))_70%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-transparent"
       />
 
       <div
@@ -96,7 +96,7 @@ const Hero = () => {
       <div className="container mx-auto px-5 sm:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <motion.div
-            className="order-1"
+            className="order-2 lg:order-1"
             style={{ y: contentY }}
             variants={staggerContainer}
             initial="hidden"
@@ -104,7 +104,7 @@ const Hero = () => {
           >
             <motion.div
               variants={fadeUpItem}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-sm text-foreground/80 shadow-[0_18px_60px_-34px_hsl(var(--foreground)/0.45)] backdrop-blur-xl"
+              className="mb-6 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-sm text-foreground/80 backdrop-blur-xl"
             >
               <span className="signal-dot" />
               Embedded Systems
@@ -114,21 +114,11 @@ const Hero = () => {
               Edge AI
             </motion.div>
 
-            <motion.p
-              variants={fadeUpItem}
-              className="mb-3 text-lg text-muted-foreground"
-            >
-              Hello, It&apos;s Me
-            </motion.p>
-
             <motion.h1
               variants={fadeUpItem}
               className="mb-5 font-display text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-7xl"
             >
-              Amir{" "}
-              <span className="text-primary">
-                P.Adam
-              </span>
+              Hi, <span className="text-primary">Amir</span> here.
             </motion.h1>
 
             <motion.h2
@@ -145,10 +135,14 @@ const Hero = () => {
               className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               Electronics and Communication Engineering graduate focused on
-              Embedded Systems and IoT. I build end-to-end connected systems
+              Embedded Systems and IoT. I design end-to-end connected systems
               using C/C++ and Python across ESP32, STM32, and Raspberry Pi,
-              with hands-on experience in firmware, sensor integration,
-              communication protocols, telemetry, and system bring-up. 
+              with hands-on experience in firmware development, sensor integration,
+              communication protocols, telemetry, and system bring-up.
+
+              Outside of engineering, I explore nature photography and travel,
+              developing a strong sense of observation, composition, and real-world
+              context that influences how I design and build systems.
             </motion.p>
 
             <motion.div
@@ -158,7 +152,7 @@ const Hero = () => {
               {focusAreas.map((focus) => (
                 <span
                   key={focus}
-                  className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm text-foreground/85 shadow-[0_12px_30px_-24px_hsl(var(--primary)/0.55)] sm:px-4 sm:py-2"
+                  className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm text-foreground/85 sm:px-4 sm:py-2"
                 >
                   {focus}
                 </span>
@@ -180,7 +174,7 @@ const Hero = () => {
                   }
                   whileTap={{ scale: 0.97 }}
                   transition={softSpring}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-background/75 text-primary shadow-[0_16px_40px_-28px_hsl(var(--primary)/0.75)] backdrop-blur-xl transition-colors duration-300 hover:border-primary/40 hover:text-primary sm:h-12 sm:w-12"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-background/75 text-primary backdrop-blur-xl transition-colors duration-300 hover:border-primary/40 hover:text-primary sm:h-12 sm:w-12"
                   aria-label={social.label}
                 >
                   <social.icon
@@ -226,7 +220,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="order-2 flex justify-center"
+            className="order-1 lg:order-2 flex justify-center"
             style={{ y: imageY }}
             variants={fadeInItem}
             initial="hidden"
@@ -268,7 +262,7 @@ const Hero = () => {
                   {!shouldReduceMotion && <div className="hero-scan-line" aria-hidden />}
                   <div
                     aria-hidden
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.22),transparent_42%),linear-gradient(180deg,hsl(var(--background)/0),hsl(var(--background)/0.06)_80%,hsl(var(--background)/0.3))]"
+                    className="absolute inset-0 bg-transparent"
                   />
                   <motion.img
                     src={profileImage}
@@ -282,9 +276,9 @@ const Hero = () => {
                       shouldReduceMotion
                         ? undefined
                         : {
-                            y: [0, -10, 0],
-                            rotate: [-1, 1, -1],
-                          }
+                          y: [0, -10, 0],
+                          rotate: [-1, 1, -1],
+                        }
                     }
                     transition={{
                       duration: 8,
@@ -294,7 +288,7 @@ const Hero = () => {
                   />
                   <div
                     aria-hidden
-                    className="absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-background/60 to-transparent"
+                    className="absolute inset-x-0 bottom-0 z-20 h-28 bg-transparent"
                   />
                 </div>
               </div>

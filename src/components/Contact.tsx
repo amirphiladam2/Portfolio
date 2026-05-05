@@ -76,7 +76,7 @@ const Contact = () => {
           >
             <motion.div
               variants={fadeUpItem}
-              className="glass rounded-[2rem] border border-primary/15 p-5 shadow-[0_24px_80px_-48px_hsl(var(--foreground)/0.85)] sm:p-6"
+              className="glass rounded-[2rem] border border-primary/15 p-5 sm:p-6"
             >
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-3 py-2 text-sm text-primary">
                 <span className="h-2 w-2 rounded-full bg-primary" />
@@ -125,7 +125,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={sectionViewport}
             transition={{ duration: 0.7, ease: smoothEase }}
-            className="glass space-y-5 rounded-[2rem] border border-primary/15 p-5 shadow-[0_28px_90px_-50px_hsl(var(--foreground)/0.85)] sm:p-6"
+            className="glass space-y-5 rounded-[2rem] border border-primary/15 p-5 sm:p-6"
             onSubmit={handleSubmit}
           >
             <div className="grid gap-5 sm:grid-cols-2">

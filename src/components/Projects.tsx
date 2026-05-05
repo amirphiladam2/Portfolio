@@ -134,7 +134,7 @@ const ProjectCard = ({
     [0, 100],
     shouldReduceMotion ? [0, 0] : [-10, 10],
   );
-  const spotlight = useMotionTemplate`radial-gradient(circle at ${smoothX}% ${smoothY}%, hsl(var(--primary) / 0.24), transparent 48%)`;
+  const spotlight = useMotionTemplate`none`;
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) {
@@ -174,14 +174,14 @@ const ProjectCard = ({
                 transformStyle: "preserve-3d",
               }
         }
-        className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/70 bg-card/80 shadow-[0_28px_90px_-56px_hsl(var(--foreground)/0.65)] backdrop-blur-xl sm:rounded-[1.75rem]"
+        className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/70 bg-card/80 backdrop-blur-xl sm:rounded-[1.75rem]"
       >
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{ backgroundImage: spotlight }}
         />
-        <div className="absolute inset-x-8 top-0 z-10 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-x-8 top-0 z-10 h-px bg-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
         <div className="relative aspect-[16/11] overflow-hidden sm:aspect-[16/10]">
           <motion.img
@@ -197,7 +197,7 @@ const ProjectCard = ({
               scale: shouldReduceMotion ? 1.02 : 1.08,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/15 to-transparent" />
+          <div className="absolute inset-0 bg-transparent" />
           <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
             {project.tags.slice(0, 2).map((tag) => (
               <span
