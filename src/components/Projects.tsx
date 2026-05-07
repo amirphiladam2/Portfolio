@@ -16,6 +16,7 @@ import Dashboard from "@/assets/Dashboard.png";
 import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
 import OpenCV from "@/assets/OpenCV.jpeg";
+import Feature from "@/assets/Feature.png"
 import {
   fadeUpItem,
   sectionViewport,
@@ -27,6 +28,22 @@ import { useHasFinePointer } from "@/hooks/use-has-fine-pointer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
+  {
+    title:"Caloriee-Calorie Tracker & AI Recipe Generator",
+    description:"Full Stack App built with React Native that allows users to log meals,track calories,generate recipes and personalize goals.",
+    image:Feature,
+    tags:[
+       "React Native",
+       "Expo",
+       "Supabase",
+       "Gemini 2.5 API",
+       "Firebase",
+       "NativeWind",
+       "PostgresQL",
+    ],
+    link:"https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
+  },
+
   {
     title: "IoT-Based Food Monitoring System",
     description:
