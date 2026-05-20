@@ -102,18 +102,6 @@ const Hero = () => {
             initial="hidden"
             animate="show"
           >
-            <motion.div
-              variants={fadeUpItem}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-background/70 px-4 py-2 text-sm text-foreground/80 backdrop-blur-xl"
-            >
-              <span className="signal-dot" />
-              Embedded Systems
-              <span className="h-1 w-1 rounded-full bg-foreground/20" />
-              IoT
-              <span className="h-1 w-1 rounded-full bg-foreground/20" />
-              Edge AI
-            </motion.div>
-
             <motion.h1
               variants={fadeUpItem}
               className="mb-5 font-display text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-7xl"

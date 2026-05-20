@@ -78,10 +78,7 @@ const Contact = () => {
               variants={fadeUpItem}
               className="glass rounded-[2rem] border border-primary/15 p-5 sm:p-6"
             >
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/10 px-3 py-2 text-sm text-primary">
-                <span className="h-2 w-2 rounded-full bg-primary" />
-                Open to internships and collaborations
-              </div>
+             
               <p className="text-muted-foreground">
                 I enjoy working where hardware reliability and product
                 experience meet. That can mean firmware, data acquisition,

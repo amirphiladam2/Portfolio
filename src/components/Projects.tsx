@@ -290,8 +290,7 @@ const Projects = () => {
             Featured <span className="text-primary">Projects</span>
           </h2>
           <p className="text-base text-muted-foreground sm:text-lg">
-            A few builds where embedded systems, sensing, networking, and UX
-            came together as one product experience.
+            A few builds of my projects that involves embedded systems and IoT, sensing and mobile app development.
           </p>
         </motion.div>
 
