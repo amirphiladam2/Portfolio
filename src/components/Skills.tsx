@@ -72,6 +72,8 @@ const categories = [
       { name: "ThingSpeak", icon: LineChart, color: "#00B3E6" },
       { name: "Flask", icon: SiFlask, color: "#FFFFFF" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#018DFF" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
     ],
     className: "lg:col-span-1 md:col-span-1",
   },
@@ -82,24 +84,10 @@ const categories = [
     color: "from-purple-500/20 to-fuchsia-500/5",
     accent: "text-purple-500",
     skills: [
-      { name: "LoRa", icon: Radio, color: "#7C3AED" },
+      { name: "LoRa", icon: Radio, color: "#17a6f8" },
       { name: "MQTT", icon: LayoutTemplate, color: "#FF6F61" },
       { name: "HTTP/REST", icon: Server, color: "#4A90E2" },
       { name: "I2C•SPI•UART", icon: Cable, color: "#A8B1FF" },
-    ],
-    className: "lg:col-span-1 md:col-span-1",
-  },
-  {
-    title: "Mobile App Dev",
-    icon: Smartphone,
-    description: "Creating native mobile applications that make hardware data intuitive.",
-    color: "from-blue-500/20 to-amber-500/5",
-    accent: "text-blue-500",
-    skills: [
-      { name: "React Native", icon: SiReact, color: "#61DAFB" },
-      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
     ],
     className: "lg:col-span-1 md:col-span-1",
   },
@@ -112,13 +100,28 @@ const categories = [
     skills: [
       { name: "Git", icon: SiGit, color: "#F05032" },
       { name: "GitHub", icon: SiGithub, color: "#FCC624" },
+      { name: "STM32CubeIDE", icon:SiStmicroelectronics, color: "#0A6FF1"  },
       { name: "PlatformIO", icon: SiPlatformio, color: "#EB780C" },
       { name: "EasyEDA", icon: SiEasyeda, color: "#0883F7" },
       { name: "Postman", icon: SiPostman, color: "#F05032" },
+      
    
     ],
     className: "lg:col-span-3 md:col-span-2",
   },
+  {
+    title: "Mobile App Dev",
+    icon: Smartphone,
+    description: "Creating native mobile applications that make hardware data intuitive.",
+    color: "from-blue-500/20 to-amber-500/5",
+    accent: "text-blue-500",
+    skills: [
+      { name: "React Native", icon: SiReact, color: "#61DAFB" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+    ],
+    className: "lg:col-span-1 md:col-span-1",
+  },
+
 ];
 
 const Skills = () => {

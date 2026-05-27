@@ -29,22 +29,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
   {
-    title:"Caloriee-Calorie Tracker & AI Recipe Generator",
-    description:"Full Stack App built with React Native that allows users to log meals,track calories,generate recipes and personalize goals.",
-    image:Feature,
-    tags:[
-       "React Native",
-       "Expo",
-       "Supabase",
-       "Gemini 2.5 API",
-       "Firebase",
-       "NativeWind",
-       "PostgresQL",
-    ],
-    link:"https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
-  },
-
-  {
     title: "IoT-Based Food Monitoring System",
     description:
       "This is an end-to-end food freshness monitoring system built around an ESP32 smart food box, an AWS IoT ingestion pipeline, Firebase storage, and an Expo mobile app. The project lets a user pair a hardware device to their account, monitor live sensor readings, review recent history, and receive alerts when food conditions become unsafe.",
@@ -59,6 +43,14 @@ const projects = [
       "React Native (Expo)",
     ],
     link: "https://github.com/amirphiladam2/IoT-Based-Food-Monitoring-System",
+  },
+    {
+    title: "Disaster-Resilient Hybrid Mesh Communication System Using ESP32-LoRa",
+    description:
+      "A disaster-resilient hybrid mesh communication system using ESP32-LoRa for long-range communication.",
+    image: DisasterResilient,
+    tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
+    link: "https://techtacklenerd.blogspot.com/2025/11/disaster-resilient-hybrid-mesh.html",
   },
   {
     title: "Edge AI Smart Surveillance System",
@@ -93,20 +85,19 @@ const projects = [
     link: "https://techtacklenerd.blogspot.com/2024/10/home-automation-project-using-esp32-and.html",
   },
   {
-    title: "Disaster-Resilient Hybrid Mesh Communication System Using ESP32-LoRa",
-    description:
-      "A disaster-resilient hybrid mesh communication system using ESP32-LoRa for long-range communication.",
-    image: DisasterResilient,
-    tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
-    link: "https://techtacklenerd.blogspot.com/2025/11/disaster-resilient-hybrid-mesh.html",
-  },
-  {
-    title: "Wireless Sensor Network with LoRa",
-    description:
-      "A complete wireless sensor network solution using LoRa technology for long-range communication.",
-    image: WirelessSensor,
-    tags: ["LoRa", "ESP32", "ESP8266"],
-    link: "https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html",
+    title:"Caloriee-Calorie Tracker & AI Recipe Generator",
+    description:"Full Stack App built with React Native that allows users to log meals,track calories,generate recipes and personalize goals.",
+    image:Feature,
+    tags:[
+       "React Native",
+       "Expo",
+       "Supabase",
+       "Gemini 2.5 API",
+       "Firebase",
+       "NativeWind",
+       "PostgresQL",
+    ],
+    link:"https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
   },
 ];
 
