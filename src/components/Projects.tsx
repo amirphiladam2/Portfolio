@@ -69,22 +69,6 @@ const projects = [
     link: "https://github.com/amirphiladam2/edge-ai-surveillance",
   },
   {
-    title: "Full-Stack IoT Monitoring Platform",
-    description:
-      "Designed and implemented an end-to-end IoT data pipeline integrating embedded hardware, RESTful backend services, and a real-time web dashboard.",
-    image: Dashboard,
-    tags: ["ESP32", "DHT11", "Flask", "SQLite", "React (Vite)", "REST API"],
-    link: "https://github.com/amirphiladam2/FullStack-IoT",
-  },
-  {
-    title: "Smart Home Automation",
-    description:
-      "An integrated embedded system for home automation using Python, Pyserial, and ESP32.",
-    image: HomeAutomation,
-    tags: ["C/C++", "ESP32", "Python", "Pyserial"],
-    link: "https://techtacklenerd.blogspot.com/2024/10/home-automation-project-using-esp32-and.html",
-  },
-  {
     title:"Caloriee-Calorie Tracker & AI Recipe Generator",
     description:"Full Stack App built with React Native that allows users to log meals,track calories,generate recipes and personalize goals.",
     image:Feature,
