@@ -7,16 +7,13 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, PlayCircle, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import SmartBox from "@/assets/smart-box.jpeg";
-import WirelessSensor from "@/assets/WirelessSensor.jpg";
-import Dashboard from "@/assets/Dashboard.png";
-import HomeAutomation from "@/assets/HomeAutomation.jpg";
 import DisasterResilient from "@/assets/DistasterManagement.jpg";
 import OpenCV from "@/assets/OpenCV.jpeg";
-import Feature from "@/assets/Feature.png"
+import Feature from "@/assets/Feature.png";
 import {
   fadeUpItem,
   sectionViewport,
@@ -87,10 +84,68 @@ const projects = [
 
 type Project = (typeof projects)[number];
 
+type TechnicalContentVideo = {
+  url: string;
+  title?: string;
+  description?: string;
+};
+
+// Paste the exact public YouTube URLs you want to feature here.
+const technicalContentVideos: TechnicalContentVideo[] = [
+  {
+    url: "https://www.youtube.com/watch?v=dPQBEeybkio",
+    title: "Video Spotlight 01",
+    description:
+      "Featured from AmirDevStudio to highlight technical teaching, build logs, and engineering walkthroughs.",
+  },
+  {
+    url: "https://youtu.be/-lfTWxTKWUo",
+    title: "Video Spotlight 03",
+    description:
+      "A high-visibility feature card for one of your selected public videos.",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=7eq1FY_KfjQ",
+    title: "Video Spotlight 02",
+    description:
+      "A live YouTube slot for practical software, embedded, or open-source education content.",
+  }
+  
+];
+
 const cardSpring = {
   stiffness: 180,
   damping: 24,
   mass: 0.6,
+};
+
+const extractYouTubeVideoId = (url: string) => {
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.slice(1) || null;
+    }
+
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      if (parsedUrl.pathname.startsWith("/shorts/")) {
+        return parsedUrl.pathname.split("/")[2] || null;
+      }
+
+      return parsedUrl.searchParams.get("v");
+    }
+  } catch {
+    const match = url.match(/(?:v=|youtu\.be\/|shorts\/)([A-Za-z0-9_-]{11})/);
+    return match?.[1] ?? null;
+  }
+
+  return null;
+};
+
+const getYouTubeThumbnail = (url: string) => {
+  const videoId = extractYouTubeVideoId(url);
+
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null;
 };
 
 const ProjectCard = ({
@@ -244,6 +299,82 @@ const ProjectCard = ({
   );
 };
 
+const TechnicalContentCard = ({
+  video,
+  index,
+}: {
+  video: TechnicalContentVideo;
+  index: number;
+}) => {
+  const videoUrl = video.url;
+  const thumbnailUrl = getYouTubeThumbnail(videoUrl);
+  const displayTitle = video.title ?? `Featured Video ${String(index + 1).padStart(2, "0")}`;
+  const displayDescription =
+    video.description ??
+    "Selected YouTube content covering technical walkthroughs, engineering lessons, and open-source education.";
+
+  return (
+    <motion.article
+      variants={fadeUpItem}
+      transition={{ duration: 0.7, ease: smoothEase, delay: index * 0.08 }}
+      className="group overflow-hidden rounded-[1.5rem] border border-border/70 bg-background/55 backdrop-blur-xl"
+    >
+      <a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="relative aspect-video overflow-hidden">
+          {thumbnailUrl ? (
+            <img
+              src={thumbnailUrl}
+              alt={`${displayTitle} YouTube thumbnail`}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          ) : (
+            <div className="h-full w-full bg-gradient-to-br from-primary/25 via-card to-background" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/85 backdrop-blur-md">
+            {displayTitle}
+          </div>
+          <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg backdrop-blur-md">
+            <PlayCircle size={16} />
+            Watch on YouTube
+          </div>
+        </div>
+      </a>
+
+      <div className="p-5 sm:p-6">
+        <div className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary/75">
+          <Youtube size={14} />
+          Technical Content
+        </div>
+        <h3 className="mb-3 font-display text-xl font-semibold leading-tight text-foreground sm:text-2xl">
+          {displayTitle}
+        </h3>
+        <p className="mb-6 text-sm leading-6 text-muted-foreground">
+          {displayDescription}
+        </p>
+        <Button
+          variant="outline"
+          size="default"
+          className="min-h-11 w-full justify-center border-primary/25 bg-background/60 backdrop-blur-md hover:border-primary/45 sm:w-fit"
+          asChild
+        >
+          <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+            Open Video
+            <ExternalLink size={16} />
+          </a>
+        </Button>
+      </div>
+    </motion.article>
+  );
+};
+
 const Projects = () => {
   return (
     <section id="portfolio" className="relative overflow-hidden py-20 sm:py-24">
@@ -279,6 +410,75 @@ const Projects = () => {
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={sectionViewport}
+          transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
+          className="mt-14 overflow-hidden rounded-[2rem] border border-primary/15 bg-card/80 p-6 backdrop-blur-xl sm:mt-16 sm:p-8 lg:p-10"
+        >
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary/75">
+                Knowledge Sharing
+              </p>
+              <h3 className="mb-4 font-display text-2xl font-bold sm:text-3xl lg:text-4xl">
+                Technical Content &{" "}
+                <span className="text-primary">Open Source Education</span>
+              </h3>
+              <p className="text-base leading-7 text-muted-foreground sm:text-lg">
+                A dedicated, high-visibility row for selected YouTube videos that
+                document builds, explain engineering decisions, and share
+                practical open-source learning.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {["YouTube walkthroughs", "Build breakdowns", "Open-source education"].map(
+                  (item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs text-primary"
+                    >
+                      {item}
+                    </span>
+                  ),
+                )}
+              </div>
+            </div>
+
+            <Button
+              variant="youtube"
+              size="lg"
+              className="w-full justify-center sm:w-auto"
+              asChild
+            >
+              <a
+                href="https://youtube.com/@amirdevstudios"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Youtube size={18} />
+                Visit AmirDevStudio
+              </a>
+            </Button>
+          </div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-3"
+          >
+            {technicalContentVideos.map((video, index) => (
+              <TechnicalContentCard
+                key={video.url}
+                video={video}
+                index={index}
+              />
+            ))}
+          </motion.div>
         </motion.div>
 
         <motion.div
