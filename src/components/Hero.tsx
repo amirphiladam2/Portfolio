@@ -113,9 +113,9 @@ const Hero = () => {
               variants={fadeUpItem}
               className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              ECE graduate with practical experience in embedded firmware, IoT system integration, and edge computing. Worked with ESP32, STM32, and Raspberry Pi on real projects involving C/C++, Python, MQTT, and REST APIs. Strong debugging instincts and a track record of delivering complete, working systems.
+              ECE graduate with practical experience in embedded firmware, IoT system integration, and edge computing. Worked with ESP32, STM32, and Raspberry Pi on real projects involving C, Python, MQTT, and REST APIs.Good understanding of low level programming and memory management. Strong debugging instincts and a track record of delivering complete, working systems.
 
-              Outside of engineering, I enjoy taking short trips to explore new places and cultures, and practicing nature photography with a focus on landscapes.
+              Outside of engineering, I enjoy practicing nature photography with a focus on landscapes.
             </motion.p>
 
             <motion.div

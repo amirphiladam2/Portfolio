@@ -47,7 +47,7 @@ const projects = [
       "A disaster-resilient hybrid mesh communication system using ESP32-LoRa for long-range communication.",
     image: DisasterResilient,
     tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
-    link: "https://techtacklenerd.blogspot.com/2025/11/disaster-resilient-hybrid-mesh.html",
+    link: "https://github.com/amirphiladam2/lora-Communication-System",
   },
   {
     title: "Edge AI Smart Surveillance System",
