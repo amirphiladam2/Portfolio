@@ -31,13 +31,6 @@ const socialLinks = [
   { icon: Twitter, href: "https://twitter.com/amirphiladam", label: "Twitter" },
 ];
 
-const focusAreas = [
-  "Firmware engineering",
-  "IoT system design",
-  "Sensor pipelines",
-  "Edge AI prototypes",
-];
-
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
@@ -117,20 +110,6 @@ const Hero = () => {
 
               Outside of engineering, I enjoy practicing nature photography with a focus on landscapes.
             </motion.p>
-
-            <motion.div
-              variants={fadeUpItem}
-              className="mb-10 flex flex-wrap gap-3"
-            >
-              {focusAreas.map((focus) => (
-                <span
-                  key={focus}
-                  className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-sm text-foreground/85 sm:px-4 sm:py-2"
-                >
-                  {focus}
-                </span>
-              ))}
-            </motion.div>
 
             <motion.div
               variants={fadeUpItem}

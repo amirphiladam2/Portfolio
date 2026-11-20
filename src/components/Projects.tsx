@@ -7,7 +7,14 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { ExternalLink, PlayCircle, Youtube } from "lucide-react";
+import {
+  ArrowUpRight,
+  ExternalLink,
+  Github,
+  PlayCircle,
+  Smartphone,
+  Youtube,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import SmartBox from "@/assets/smart-box.jpeg";
@@ -24,35 +31,54 @@ import {
 import { useHasFinePointer } from "@/hooks/use-has-fine-pointer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const projects = [
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  tags: string[];
+  link: string;
+  github?: string;
+  demo?: string;
+  stats?: string;
+};
+
+const projects: Project[] = [
   {
-    title: "IoT-Based Food Monitoring System",
+    title: "IoT-Based Food Freshness Monitoring System",
+    category: "IoT & Cloud Architecture",
     description:
-      "This is an end-to-end food freshness monitoring system built around an ESP32 smart food box, an AWS IoT ingestion pipeline, Firebase storage, and an Expo mobile app. The project lets a user pair a hardware device to their account, monitor live sensor readings, review recent history, and receive alerts when food conditions become unsafe.",
+      "An end-to-end food freshness and environmental monitoring system built around an ESP32 smart food container, AWS IoT Core ingestion pipeline, Firebase storage, and an Expo mobile application for real-time telemetry and hazard alerts.",
     image: SmartBox,
     tags: [
       "ESP32",
-      "MQ135",
+      "MQ135 Gas Sensor",
       "DHT11",
       "AWS IoT Core",
       "Lambda",
       "Firebase",
-      "React Native (Expo)",
+      "React Native",
     ],
     link: "https://github.com/amirphiladam2/IoT-Based-Food-Monitoring-System",
+    github: "https://github.com/amirphiladam2/IoT-Based-Food-Monitoring-System",
+    stats: "Live Telemetry",
   },
-    {
-    title: "Disaster-Resilient Hybrid Mesh Communication System Using ESP32-LoRa",
+  {
+    title: "Disaster-Resilient Hybrid Mesh Communication",
+    category: "Off-Grid Embedded Systems",
     description:
-      "A disaster-resilient hybrid mesh communication system using ESP32-LoRa for long-range communication.",
+      "A decentralized emergency communication network leveraging ESP32 microcontrollers and LoRa radio transceivers. Engineered to maintain peer-to-peer telemetry and message routing during natural catastrophes when cellular towers fail.",
     image: DisasterResilient,
-    tags: ["C/C++", "ESP32", "LoRa", "Mesh Network"],
+    tags: ["C/C++", "ESP32", "LoRa RF", "Mesh Network", "Hardware Prototyping"],
     link: "https://github.com/amirphiladam2/lora-Communication-System",
+    github: "https://github.com/amirphiladam2/lora-Communication-System",
+    stats: "ESP32-LoRa",
   },
   {
     title: "Edge AI Smart Surveillance System",
+    category: "Computer Vision & Edge AI",
     description:
-      "A real-time, stateful Edge AI-powered surveillance system built for the Raspberry Pi. It performs on-device human detection, utilizes spatial logic for virtual tripwires, serves a live local web dashboard, and sends instant asynchronous alerts via Telegram, all without relying on cloud processing.",
+      "A real-time, stateful Edge AI surveillance system engineered for Raspberry Pi. Performs on-device human detection, spatial logic for virtual tripwires, a live local dashboard, and instantaneous zero-cloud Telegram bot alerts.",
     image: OpenCV,
     tags: [
       "Raspberry Pi",
@@ -64,25 +90,29 @@ const projects = [
       "Telegram Bot API",
     ],
     link: "https://github.com/amirphiladam2/edge-ai-surveillance",
+    github: "https://github.com/amirphiladam2/edge-ai-surveillance",
+    stats: "On-Device AI",
   },
   {
-    title:"Caloriee-Calorie Tracker & AI Recipe Generator",
-    description:"Full Stack App built with React Native that allows users to log meals,track calories,generate recipes and personalize goals.",
-    image:Feature,
-    tags:[
-       "React Native",
-       "Expo",
-       "Supabase",
-       "Gemini 2.5 API",
-       "Firebase",
-       "NativeWind",
-       "PostgresQL",
+    title: "Caloriee — AI Calorie Tracker & Recipe Generator",
+    category: "Mobile & Generative AI",
+    description:
+      "A full-stack cross-platform mobile application powered by Gemini AI and React Native. Empowers users to log nutrition, track daily calories, generate custom personalized recipes, and manage health milestones with cloud sync.",
+    image: Feature,
+    tags: [
+      "React Native",
+      "Expo",
+      "Gemini AI",
+      "Supabase",
+      "Firebase",
+      "NativeWind",
+      "PostgreSQL",
     ],
-    link:"https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
+    link: "https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
+    demo: "https://play.google.com/store/apps/details?id=com.caloriee.com&hl=en_IN",
+    stats: "Play Store",
   },
 ];
-
-type Project = (typeof projects)[number];
 
 type TechnicalContentVideo = {
   url: string;
@@ -109,8 +139,7 @@ const technicalContentVideos: TechnicalContentVideo[] = [
     title: "Video Spotlight 02",
     description:
       "A live YouTube slot for practical software, embedded, or open-source education content.",
-  }
-  
+  },
 ];
 
 const cardSpring = {
@@ -164,24 +193,14 @@ const ProjectCard = ({
   const smoothX = useSpring(mouseX, cardSpring);
   const smoothY = useSpring(mouseY, cardSpring);
   const rotateX = useSpring(
-    useTransform(smoothY, [0, 100], shouldReduceMotion ? [0, 0] : [8, -8]),
+    useTransform(smoothY, [0, 100], shouldReduceMotion ? [0, 0] : [4, -4]),
     cardSpring,
   );
   const rotateY = useSpring(
-    useTransform(smoothX, [0, 100], shouldReduceMotion ? [0, 0] : [-8, 8]),
+    useTransform(smoothX, [0, 100], shouldReduceMotion ? [0, 0] : [-4, 4]),
     cardSpring,
   );
-  const imageX = useTransform(
-    smoothX,
-    [0, 100],
-    shouldReduceMotion ? [0, 0] : [-12, 12],
-  );
-  const imageY = useTransform(
-    smoothY,
-    [0, 100],
-    shouldReduceMotion ? [0, 0] : [-10, 10],
-  );
-  const spotlight = useMotionTemplate`none`;
+  const spotlight = useMotionTemplate`radial-gradient(380px circle at ${smoothX}% ${smoothY}%, hsl(var(--primary) / 0.16), transparent 80%)`;
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) {
@@ -201,16 +220,21 @@ const ProjectCard = ({
     mouseY.set(50);
   };
 
+  const isPlayStore =
+    project.link.includes("play.google.com") ||
+    Boolean(project.demo?.includes("play.google.com"));
+  const isGithub = project.link.includes("github.com");
+
   return (
     <motion.div
       variants={fadeUpItem}
       transition={{ duration: 0.7, ease: smoothEase, delay: index * 0.08 }}
-      className={cn("group h-full", !shouldReduceMotion && "[perspective:1400px]")}
+      className={cn("group h-full", !shouldReduceMotion && "[perspective:1200px]")}
       onPointerMove={shouldReduceMotion ? undefined : handlePointerMove}
       onPointerLeave={shouldReduceMotion ? undefined : handlePointerLeave}
     >
       <motion.article
-        whileHover={shouldReduceMotion ? undefined : { y: -10 }}
+        whileHover={shouldReduceMotion ? undefined : { y: -6 }}
         transition={softSpring}
         style={
           shouldReduceMotion
@@ -221,78 +245,152 @@ const ProjectCard = ({
                 transformStyle: "preserve-3d",
               }
         }
-        className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/70 bg-card/80 backdrop-blur-xl sm:rounded-[1.75rem]"
+        className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/80 bg-card/70 backdrop-blur-xl transition-all duration-500 hover:border-primary/45 hover:shadow-[0_16px_40px_-12px_hsl(var(--primary)/0.18)] sm:rounded-[1.75rem]"
       >
+        {/* Dynamic interactive spotlight */}
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{ backgroundImage: spotlight }}
         />
-        <div className="absolute inset-x-8 top-0 z-10 h-px bg-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-        <div className="relative aspect-[16/11] overflow-hidden sm:aspect-[16/10]">
-          <motion.img
+        {/* Top specular glow line */}
+        <div className="absolute inset-x-8 top-0 z-10 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+        {/* Full-bleed media showcase */}
+        <div className="relative w-full aspect-[16/10] overflow-hidden border-b border-border/70 bg-muted/20">
+          <img
             src={project.image}
             alt={project.title}
             loading="lazy"
             decoding="async"
-            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-            className="h-full w-full object-cover"
-            style={{
-              x: imageX,
-              y: imageY,
-              scale: shouldReduceMotion ? 1.02 : 1.08,
-            }}
+            sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 40vw"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-            {project.tags.slice(0, 2).map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/20 bg-background/70 px-3 py-1 text-[11px] font-medium text-foreground/90 backdrop-blur-md"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
+        {/* Content Section */}
         <div
           className={cn(
             "relative z-10 flex flex-1 flex-col p-5 sm:p-6",
-            !shouldReduceMotion && "[transform:translateZ(20px)]",
+            !shouldReduceMotion && "[transform:translateZ(15px)]",
           )}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-primary/75">
-            Featured Build
-          </p>
-          <h3 className="mb-3 font-display text-xl font-semibold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary sm:text-2xl">
-            {project.title}
-          </h3>
-          <p className="mb-6 text-sm leading-6 text-muted-foreground">
+          {/* Category & Status indicator */}
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <div className="inline-flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-primary/85">
+                {project.category}
+              </span>
+            </div>
+            {project.stats && (
+              <span className="text-[11px] font-mono text-muted-foreground/80">
+                {project.stats}
+              </span>
+            )}
+          </div>
+          {/* Title Header with external jump */}
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/title mb-3 block"
+          >
+            <h3 className="font-display text-xl font-bold leading-snug text-foreground transition-colors duration-300 group-hover/title:text-primary sm:text-2xl flex items-start justify-between gap-2">
+              <span>{project.title}</span>
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground/60 transition-all duration-300 group-hover/title:text-primary group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5" />
+            </h3>
+          </a>
+
+          {/* Description */}
+          <p className="mb-5 text-sm leading-relaxed text-muted-foreground line-clamp-3">
             {project.description}
           </p>
-          <div className="mb-6 flex flex-wrap gap-2">
+
+          {/* Tech Stack Tags */}
+          <div className="mb-6 flex flex-wrap gap-1.5">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs text-primary"
+                className="inline-flex items-center rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-mono text-foreground/80 transition-colors duration-200 group-hover:border-primary/20 hover:!border-primary/50 hover:!text-primary"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <Button
-            variant="outline"
-            size="default"
-            className="mt-auto min-h-11 w-full justify-center border-primary/25 bg-background/60 backdrop-blur-md hover:border-primary/45 sm:w-fit"
-            asChild
-          >
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View Project
-              <ExternalLink size={16} />
+
+          {/* Action Footer */}
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border/50 pt-4">
+            <div className="flex flex-wrap items-center gap-2">
+              {project.github && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9 gap-1.5 border-border/80 bg-background/60 text-xs font-medium hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                  asChild
+                >
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-3.5 w-3.5" />
+                    <span>Source Code</span>
+                  </a>
+                </Button>
+              )}
+
+              {project.demo && (
+                <Button
+                  size="sm"
+                  className="h-9 gap-1.5 bg-primary text-xs font-semibold text-primary-foreground hover:bg-primary/90 shadow-sm"
+                  asChild
+                >
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {isPlayStore ? (
+                      <Smartphone className="h-3.5 w-3.5" />
+                    ) : (
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    )}
+                    <span>{isPlayStore ? "Google Play" : "Live Demo"}</span>
+                  </a>
+                </Button>
+              )}
+
+              {!project.github && !project.demo && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9 gap-1.5 border-primary/30 bg-primary/10 text-xs font-medium text-primary hover:bg-primary/20 hover:border-primary/50"
+                  asChild
+                >
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>View Project</span>
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </Button>
+              )}
+            </div>
+
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-mono font-medium text-muted-foreground/80 hover:text-primary transition-colors"
+            >
+              <span>{isGithub ? "github.com" : isPlayStore ? "play.google.com" : "open link"}</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
-          </Button>
+          </div>
         </div>
       </motion.article>
     </motion.div>
@@ -317,59 +415,65 @@ const TechnicalContentCard = ({
     <motion.article
       variants={fadeUpItem}
       transition={{ duration: 0.7, ease: smoothEase, delay: index * 0.08 }}
-      className="group overflow-hidden rounded-[1.5rem] border border-border/70 bg-background/55 backdrop-blur-xl"
+      className="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-border/80 bg-card/70 backdrop-blur-xl transition-all duration-500 hover:border-primary/45 hover:shadow-[0_16px_40px_-12px_hsl(var(--primary)/0.15)]"
     >
+      {/* Specular top-border highlight line */}
+      <div className="absolute inset-x-8 top-0 z-10 h-px bg-gradient-to-r from-transparent via-[#FF0000]/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
       <a
         href={videoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block"
+        className="block relative w-full aspect-video overflow-hidden border-b border-border/70 bg-muted/20"
       >
-        <div className="relative aspect-video overflow-hidden">
-          {thumbnailUrl ? (
-            <img
-              src={thumbnailUrl}
-              alt={`${displayTitle} YouTube thumbnail`}
-              loading="lazy"
-              decoding="async"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-            />
-          ) : (
-            <div className="h-full w-full bg-gradient-to-br from-primary/25 via-card to-background" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
-          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/85 backdrop-blur-md">
-            {displayTitle}
-          </div>
-          <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg backdrop-blur-md">
-            <PlayCircle size={16} />
-            Watch on YouTube
-          </div>
-        </div>
+        {thumbnailUrl ? (
+          <img
+            src={thumbnailUrl}
+            alt={`${displayTitle} YouTube thumbnail`}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-primary/25 via-card to-background" />
+        )}
       </a>
 
-      <div className="p-5 sm:p-6">
-        <div className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-primary/75">
-          <Youtube size={14} />
+      <div className="flex flex-1 flex-col p-5 sm:p-6 pt-4 sm:pt-5">
+        <div className="mb-2.5 inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#FF0000]/90">
+          <Youtube size={13} />
           Technical Content
         </div>
-        <h3 className="mb-3 font-display text-xl font-semibold leading-tight text-foreground sm:text-2xl">
-          {displayTitle}
-        </h3>
-        <p className="mb-6 text-sm leading-6 text-muted-foreground">
+
+        <a
+          href={videoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/vtitle mb-3 block"
+        >
+          <h3 className="font-display text-xl font-bold leading-tight text-foreground transition-colors duration-300 group-hover/vtitle:text-primary sm:text-2xl flex items-start justify-between gap-2">
+            <span>{displayTitle}</span>
+            <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground/60 transition-all duration-300 group-hover/vtitle:text-primary group-hover/vtitle:translate-x-0.5 group-hover/vtitle:-translate-y-0.5" />
+          </h3>
+        </a>
+
+        <p className="mb-5 text-sm leading-relaxed text-muted-foreground line-clamp-2">
           {displayDescription}
         </p>
-        <Button
-          variant="outline"
-          size="default"
-          className="min-h-11 w-full justify-center border-primary/25 bg-background/60 backdrop-blur-md hover:border-primary/45 sm:w-fit"
-          asChild
-        >
-          <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-            Open Video
-            <ExternalLink size={16} />
-          </a>
-        </Button>
+
+        <div className="mt-auto pt-4 border-t border-border/50">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-9 w-full justify-center gap-2 border-border/80 bg-background/60 text-xs font-medium hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:text-white sm:w-fit"
+            asChild
+          >
+            <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+              <span>Open Video</span>
+              <ExternalLink size={14} />
+            </a>
+          </Button>
+        </div>
       </div>
     </motion.article>
   );
@@ -396,7 +500,7 @@ const Projects = () => {
             Featured <span className="text-primary">Projects</span>
           </h2>
           <p className="text-base text-muted-foreground sm:text-lg">
-            A few builds of my projects that involves embedded systems and IoT, sensing and mobile app development.
+            A curated showcase of engineering builds spanning embedded systems, IoT architectures, edge AI, and full-stack mobile applications.
           </p>
         </motion.div>
 
@@ -405,7 +509,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3"
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8"
         >
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
@@ -429,21 +533,23 @@ const Projects = () => {
                 <span className="text-primary">Open Source Education</span>
               </h3>
               <p className="text-base leading-7 text-muted-foreground sm:text-lg">
-                A dedicated, high-visibility row for selected YouTube videos that
+                A dedicated, high-visibility showcase for selected YouTube videos that
                 document builds, explain engineering decisions, and share
-                practical open-source learning.
+                practical open-source tutorials.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {["YouTube walkthroughs", "Build breakdowns", "Open-source education"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs text-primary"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
+                {[
+                  "YouTube Walkthroughs",
+                  "Hardware Build Logs",
+                  "Open-Source Engineering",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs text-primary font-medium"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -491,15 +597,16 @@ const Projects = () => {
           <Button
             variant="hero"
             size="lg"
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto gap-2"
             asChild
           >
             <a
-              href="#"
+              href="https://github.com/amirphiladam2?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
             >
-              View All Projects
+              <span>View All Projects on GitHub</span>
+              <ArrowUpRight size={18} />
             </a>
           </Button>
         </motion.div>

@@ -8,6 +8,7 @@ import {
   smoothEase,
   staggerContainer,
 } from "@/lib/motion";
+import { useToast } from "@/hooks/use-toast";
 
 const contactItems = [
   {
@@ -30,16 +31,38 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const { toast } = useToast();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    );
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoUrl = `mailto:amirphiladam@gmail.com?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
 
-    window.location.href = `mailto:amirphiladam@gmail.com?subject=${subject}&body=${body}`;
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      window.location.href = mailtoUrl;
+      return;
+    }
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=amirphiladam@gmail.com&su=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    const composeWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+
+    if (composeWindow) {
+      toast({
+        title: "Email draft opened",
+        description: "Review the message in Gmail and send it when ready.",
+      });
+    } else {
+      toast({
+        title: "Unable to open email",
+        description: "Please allow pop-ups or email amirphiladam@gmail.com directly.",
+      });
+    }
   };
 
   return (
